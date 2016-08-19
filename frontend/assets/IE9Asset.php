@@ -7,19 +7,25 @@ use yii\web\AssetBundle;
 /**
  * Main frontend application asset bundle.
  */
-class AppAsset extends AssetBundle
+class IE9Asset extends AssetBundle
 {
     public $basePath = '@webroot';
     public $baseUrl = '@web';
     public $css = [
-        'css/reset.css',
-        'css/style.css',
-        'css/grid.css',
+        'css/ie.css',
     ];
+    
+    public $cssOptions = ['condition' => 'lt IE9'];
+    
     public $js = [
-        'js/jquery.galleriffic.js',
-        'js/jquery.opacityrollover.js',
+        'js/html5.js',
     ];
+    
+    public $jsOptions = [
+            'condition' => 'lt IE9',
+            'position' => \yii\web\View::POS_HEAD,
+        ];
+    
     public $depends = [
         'yii\web\YiiAsset',
         'yii\bootstrap\BootstrapAsset',

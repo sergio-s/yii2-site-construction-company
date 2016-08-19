@@ -8,12 +8,15 @@ $params = array_merge(
 
 return [
     'id' => 'app-frontend',
+    'name' => 'Сайт частных мастеров',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
     'controllerNamespace' => 'frontend\controllers',
     'components' => [
         'request' => [
             'csrfParam' => '_csrf-frontend',
+            'baseUrl' => $baseUrl,
+            'cookieValidationKey' => 'shtrp[;p;,bnmqdbhmbnoytj,m485jhio-2',
         ],
         'user' => [
             'identityClass' => 'common\models\User',
@@ -33,17 +36,13 @@ return [
                 ],
             ],
         ],
+        
+        'urlManager' => require(__DIR__ . '/urlmanager.php'),
+        
         'errorHandler' => [
             'errorAction' => 'site/error',
         ],
-        /*
-        'urlManager' => [
-            'enablePrettyUrl' => true,
-            'showScriptName' => false,
-            'rules' => [
-            ],
-        ],
-        */
+       
     ],
     'params' => $params,
 ];
