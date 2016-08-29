@@ -6,8 +6,16 @@ return [
             'showScriptName' => false,
             'enableStrictParsing' => true,
             'rules' => [
-                '/' => 'site/index',
-                'site/<action>' => 'site/<action>',
+                'galery/photo/<alias:[\w_-]+>' => 'photo/pic',
+                'galery/category/<alias:[\w_-]+>' => 'photo/category',
+                'galery/<pageNum:\d+>' => 'photo/index',
+                'galery' => 'photo/index',
+                
+                '/' => 'page/home',
+                '<alias:[\w_-]+>' => 'page/normal',
+                
+                
+                
                 
             ],
         ];

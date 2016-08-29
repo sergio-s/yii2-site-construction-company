@@ -12,6 +12,16 @@ return [
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
     'controllerNamespace' => 'frontend\controllers',
+    //для того, чтобы роутер находил контроллеры в подпапках
+    'controllerMap' => [
+        'page' =>[
+                'class' =>'frontend\controllers\page\PageController'
+        ],
+        'photo' =>[
+                'class' =>'frontend\controllers\photo\PhotoController'
+        ],
+        
+    ],
     'components' => [
         'request' => [
             'csrfParam' => '_csrf-frontend',
@@ -40,7 +50,7 @@ return [
         'urlManager' => require(__DIR__ . '/urlmanager.php'),
         
         'errorHandler' => [
-            'errorAction' => 'site/error',
+            'errorAction' => 'error/error',//контроллер и экшэн обработки ошибок
         ],
        
     ],

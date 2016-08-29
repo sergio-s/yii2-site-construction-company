@@ -10,6 +10,12 @@
 //@backend: Alias for your backend root folder on your root app install directory
 //@console: Alias for your console root folder on your root app install directory
 return [
-
+    
+    '@images-web' =>  $baseUrl.'/images',//для веб
+    '@images-path' => '@frontend/web/images',//для файловой системы
+    
+    '@photogalery-web' =>  $baseUrl.'/images/photogalery',//для веб
+    '@photogalery-path' => '@frontend/web/images/photogalery',//для файловой системы
+    
 ];
 

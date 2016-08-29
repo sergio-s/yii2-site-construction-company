@@ -28,6 +28,6 @@ class IE9Asset extends AssetBundle
     
     public $depends = [
         'yii\web\YiiAsset',
-        'yii\bootstrap\BootstrapAsset',
+        //'yii\bootstrap\BootstrapAsset',
     ];
 }
