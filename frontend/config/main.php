@@ -20,6 +20,9 @@ return [
         'photo' =>[
                 'class' =>'frontend\controllers\photo\PhotoController'
         ],
+        'guest-book' =>[
+                'class' =>'frontend\controllers\gb\GuestBookController'
+        ],
         
     ],
     'components' => [

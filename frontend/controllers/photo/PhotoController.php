@@ -7,6 +7,7 @@ use frontend\controllers\BaseFront;
 use yii\data\Pagination;
 use app\models\sections\Sections;
 use app\models\photo\SectionPhotogaleryCategory;
+use app\models\photo\SectionPhotogaleryImg;
 
 /**
  * PageController
@@ -16,7 +17,7 @@ class PhotoController extends BaseFront
     use \common\traits\PageHelper;
     
     private $pageSize = 6;//кол-во материалов на странице пагинации
-    private $section = 6;
+    private $section;
     
     public function beforeAction($action) 
     {
@@ -65,12 +66,14 @@ class PhotoController extends BaseFront
     
     public function actionPic($alias = null)
     {
+        $pic = SectionPhotogaleryImg::getPageFromAlias($alias);
         
+        $category = $pic->category;
         
         return $this->render('pic',[
-//                                            'section'  => $this->section,
-//                                            'category'  => $category,
-//                                            'pics'  => $pics,
+                                            'section'  => $this->section,
+                                            'category' => $category,
+                                            'pic'      => $pic,
             
                                 ]);
     }

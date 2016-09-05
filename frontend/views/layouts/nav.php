@@ -10,7 +10,7 @@ $menu = [
     Url::home(true) => 'Про мастеров',
     Url::toRoute(['page/normal', 'alias' => 'price'], true) => 'Прайс',
     Url::toRoute(['photo/index'], true) => 'Фото работ',
-    '2' => 'Вопросы мастеру',
+    Url::toRoute(['guest-book/index'], true) => 'Вопросы мастеру',
     Url::toRoute(['page/normal', 'alias' => 'contacts'], true) => 'Контакты',
 ];
 $currentRoute = Yii::$app->controller->route;

@@ -27,7 +27,7 @@ jQuery(document).ready(function(){
         $(this).find('.bigger').stop().animate({opacity:'0'},500);
     });
                 
-    
+ 
 });
 
 

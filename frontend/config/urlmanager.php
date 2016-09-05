@@ -11,6 +11,9 @@ return [
                 'galery/<pageNum:\d+>' => 'photo/index',
                 'galery' => 'photo/index',
                 
+                'gb/<pageNum:\d+>' => 'guest-book/index',
+                'gb' => 'guest-book/index',
+                
                 '/' => 'page/home',
                 '<alias:[\w_-]+>' => 'page/normal',
                 

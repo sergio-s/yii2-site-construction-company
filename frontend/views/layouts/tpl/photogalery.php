@@ -9,7 +9,7 @@
 
 <?php $this->beginContent('@app/views/layouts/main.php'); ?>
 
-<div class="grid_12">
+<div class="">
     <?= $content; ?>
 </div>
 

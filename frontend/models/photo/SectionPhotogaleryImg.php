@@ -85,6 +85,11 @@ class SectionPhotogaleryImg extends \yii\db\ActiveRecord
         return $this->hasOne(SectionPhotogaleryCategory::className(), ['id' => 'categoryId']);
     }
 
+    public static function getPageFromAlias($alias)
+    {
+        return self::find()->whereAlias($alias)->one();
+    }
+    
     /**
      * @inheritdoc
      * @return SectionPhotogaleryImgQuery the active query used by this AR class.

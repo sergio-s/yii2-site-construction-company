@@ -17,5 +17,7 @@ return [
     '@photogalery-web' =>  $baseUrl.'/images/photogalery',//для веб
     '@photogalery-path' => '@frontend/web/images/photogalery',//для файловой системы
     
+    '@avatar-img-web' =>  $baseUrl.'/images/avatar',//для веб
+    '@avatar-img-path' => '@frontend/web/images/avatar',//для файловой системы
 ];
 

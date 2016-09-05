@@ -18,6 +18,7 @@ use Yii;
 class Sections extends \yii\db\ActiveRecord
 {
     const SEC_PHOTOGALERY = 'section_photogalery';
+    const SEC_GOEST_BOOK = 'section_goest_book';
     
     /**
      * @inheritdoc

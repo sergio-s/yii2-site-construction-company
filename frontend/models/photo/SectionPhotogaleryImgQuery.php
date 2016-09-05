@@ -31,4 +31,15 @@ class SectionPhotogaleryImgQuery extends \yii\db\ActiveQuery
     {
         return parent::one($db);
     }
+    
+    public function whereAlias($alias)
+    {
+        return $this->andWhere(['alias' => $alias]);
+    }
+    
+    public function whereStatus($status)
+    {
+       return $this->andWhere(['status' => (string)$status]);
+    }
+    
 }
