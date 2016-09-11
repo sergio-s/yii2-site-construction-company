@@ -17,7 +17,7 @@ return [
             'basePath' => '@webroot',
             'baseUrl' => '@web',
             'js' => [
-                        'js/jquery-1.6.2.min.js',
+                        'js/jquery-1.11.3.min.js',
 //                              YII_ENV_DEV ? 'jquery.js' : 'jquery.min.js',
             ]
         ],

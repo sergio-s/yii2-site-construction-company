@@ -15,6 +15,13 @@ return [
             'class' => 'yii\caching\FileCache',
         ],
         
+        //роли и авторизация
+        'authManager' => [
+            'class' => 'yii\rbac\DbManager',
+            // Роль по умолчанию. Все, кто не админы, модераторы и юзеры — гости.
+            'defaultRoles' => common\components\rbac\rbacRoles::roleArray(),
+        ],
+        
         //для ссылок в админки во фронт и на оборот
         'urlManagerFrontend' => require(dirname(dirname (__DIR__ )).'/frontend/config/urlmanager.php'),
         'urlManagerBackend' =>  require(dirname(dirname (__DIR__ )).'/backend/config/urlmanager.php'),

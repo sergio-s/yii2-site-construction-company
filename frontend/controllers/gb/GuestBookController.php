@@ -6,6 +6,7 @@ use yii\helpers\Url;
 use frontend\controllers\BaseFront;
 use yii\data\Pagination;
 use app\models\sections\Sections;
+use frontend\models\gb\GbForm;
 
 
 /**
@@ -31,9 +32,17 @@ class GuestBookController extends BaseFront
      */
     public function actionIndex($pageNum = null)
     {
+        $gbForm = new GbForm();
+        
+        if(Yii::$app->user->isGuest){
+            $gbForm->scenario = GbForm::SCENARIO_GUEST;
+        }else{
+            $gbForm->scenario = GbForm::SCENARIO_REGISTERED;
+        }
+        
         return $this->render('index',[
-                                        'section'           => $this->section,
-//                                        'pageNum'           => $pageNum,
+                                        'section'        => $this->section,
+                                        'gbForm'           => $gbForm,
 //                                        'paginCategories'   => $paginCategories,
 //                                        'pagination'        => $pagination,
 //                                        'totalCount'        => $totalCount

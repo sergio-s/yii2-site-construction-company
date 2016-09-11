@@ -7,6 +7,7 @@ use yii\helpers\HtmlPurifier;
 use yii\helpers\Url;
 use yii\helpers\BaseStringHelper;
 use yii\widgets\LinkPager;//для пагинации
+use yii\widgets\ActiveForm;
 
 
 $this->params['breadcrumbs'][] = strip_tags(trim($section->title));
@@ -17,6 +18,60 @@ $this->params['breadcrumbs'][] = strip_tags(trim($section->title));
 
 <h1 class="p2"><?= strip_tags(trim($section->h1)); ?></h1>
 <div class="">
+    <h3 class="form-title">Напишите свое сообщене...</h3>
+    <p class="required_notification">* Обязательные для заполнения поля</p>
+    <div class="gbformbox">
+        <?php $form = ActiveForm::begin([
+            'id' => 'gb-form',
+            'fieldConfig' => [
+                'template' => "{label}{input}"
+                . "<span class='help-block'>"
+                . "<i class='fa fa-thumbs-o-up'></i>"
+                . "<i class='fa fa-thumbs-o-down'></i>"
+                . "{error}"
+                . "</span>"
+                . "{hint}",
+                
+                'options' => [
+                    'tag' => 'div',
+                    'class' => 'formgroup',
+                    
+                ],
+                'hintOptions' => [
+                        'class' => 'hint-block',
+                        'tag' => 'div',
+                ],
+                'errorOptions' => [
+                        'class' => 'help-message',
+                        'tag' => 'span',
+                ],
+            ],
+            
+        ]); ?>
+
+        <?= (Yii::$app->user->isGuest === false) ? : $form->field($gbForm, 'visitor_name')->textInput(['placeholder' => $gbForm->getAttributePlaceholder( 'visitor_name' ), 'maxlength' => 255, 'class' => 'shift'])->hint('Напишите Ваше имя') 
+//            ->label($gbForm->getattributeLabel( 'visitor_name' ).' :')    
+                ?>
+
+        <?= $form->field($gbForm, 'visitor_city')->textInput(['placeholder' => $gbForm->getAttributePlaceholder( 'visitor_city' ), 'maxlength' => 255, 'class' => 'shift'])->hint('Напишите из какого Вы города') ?>
+        
+        <?= $form->field($gbForm, 'subject')->textInput(['placeholder' => $gbForm->getAttributePlaceholder( 'subject' ), 'maxlength' => 255, 'class' => 'shift'])->hint('Напишите краткую тему сообщения') ?>
+        
+        <?= $form->field($gbForm, 'message')->textarea(['rows' => 2, 'cols' => 50, 'placeholder' => $gbForm->getAttributePlaceholder( 'message' ), 'class' => 'shift'])->hint('Напишите ваше сообщение') ?>
+
+        <?php //echo $form->errorSummary($gbForm); ?>
+        
+        <div class="form-group">
+            <?= Html::submitButton('Опубликовать', ['class' => 'submit']) ?>
+        </div>
+
+        <?php ActiveForm::end(); ?>
+        
+        
+        
+    </div>
+    
+    
     <div class="block-message">
         <div class="col-80">
             <div class="padding-20">
