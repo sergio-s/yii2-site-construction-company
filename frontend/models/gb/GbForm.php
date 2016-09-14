@@ -12,6 +12,10 @@ class GbForm extends Model
     public $visitor_city;
     public $subject;
     public $message;
+    public $captcha;
+    
+    const VISITOR_TYPE_GUEST = 'guest';
+    const VISITOR_TYPE_REGISTERED = 'registered';
     
     const SCENARIO_GUEST = 'guest';
     const SCENARIO_REGISTERED = 'registered';
@@ -24,7 +28,8 @@ class GbForm extends Model
                 'visitor_name', 
                 'visitor_city', 
                 'subject', 
-                'message'
+                'message',
+                'captcha'
             ];
         $scenarios[self::SCENARIO_REGISTERED] = [
                 'visitor_city', 
@@ -43,9 +48,10 @@ class GbForm extends Model
     {
         return [
             // username and password are both required
-            [['visitor_name', 'visitor_city', 'subject', 'message'], 'required'],
+            [['visitor_name', 'visitor_city', 'subject', 'message', 'captcha'], 'required'],
             [['visitor_name', 'visitor_city', 'subject'], 'string', 'max' => 60],
             [['message'], 'string', 'max' => 1000],
+            ['captcha', 'captcha', 'captchaAction' => 'guest-book/captcha'],
 //            ['visitor_city', 'safe'],
         ];
     }
@@ -60,6 +66,7 @@ class GbForm extends Model
             'visitor_city' => 'Ваш город',
             'subject' => 'Тема',
             'message' => 'Сообщение',
+            'captcha' => 'Проверочный код'
         ];
     }
     
@@ -72,6 +79,7 @@ class GbForm extends Model
             'visitor_city'  => $repeated.'Харьков',
             'subject'       => $repeated.'Ремонт ванной',
             'message'       => 'Текст Вашего сообщения...',
+            'captcha' => 'Цифры с картинки'
         ];
     }
     

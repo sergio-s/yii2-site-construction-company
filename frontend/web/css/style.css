@@ -428,6 +428,8 @@ ul#breadcrumbs-one{
 }
 .col-20 .img-gb-box{
     display: table;
+    width: 70%;
+    margin:0 auto;
     border:1px rgba(147, 171, 188, 0.5) solid;
     padding: 6px;
     background-color: rgba(147, 171, 188, 0.2);
@@ -436,6 +438,10 @@ ul#breadcrumbs-one{
     width: 100%;
     height: auto;
     
+}
+.gb-user-data{
+    display: table;
+    margin: 0 auto;
 }
 .user-login{
     color: #105289;
@@ -517,7 +523,9 @@ ul#breadcrumbs-one{
     margin: 10px 0;
     border-bottom: 1px solid #eee;
     padding: 12px;
+    overflow: hidden;
 }
+
 /*.gbformbox {font: 14px/21px "Lucida Sans", "Lucida Grande", "Lucida Sans Unicode", sans-serif;}*/
 .gbformbox label{
     width:20%;
@@ -526,25 +534,18 @@ ul#breadcrumbs-one{
     padding:3px;
     font-family:inherit;
     font-weight: bold;
+    float:left;
 }
 .gbformbox label:after{
     content: ' :';
 }
-.gbformbox input {
-    height:20px;
-    width:40%;
-    padding:5px 8px;
+.input-box:before{
+    clear: both;
 }
+
 .gbformbox .hint-block, .gbformbox .help-block {font: 11px/14px "Lucida Sans", "Lucida Grande", "Lucida Sans Unicode", sans-serif;}
 
 /*оформление hint-block*/
-.gbformbox .help-block{
-    color:red;
-    width:40%;
-    padding-left: 10px;
-    position: relative;
-    top:4px;
-}
 
 .gbformbox .hint-block,
 .gbformbox .hint-block::before{
@@ -593,13 +594,26 @@ ul#breadcrumbs-one{
     box-shadow: 0px 0px 3px #ccc, 0 10px 15px #eee inset;
     border-radius:2px;
     padding-right:30px;
+    float: left;
     
+}
+.gbformbox input {
+    height:20px;
+    width:40%;
+    padding:5px 30px 5px 8px;
+}
+.gbformbox textarea {
+    width:45%;
+    min-height: 180px;
+    padding:5px 30px 5px 8px;
+    overflow: auto;
+    resize: none;
 }
 .gbformbox input:focus, .gbformbox textarea:focus {
     background: #fff;
     border:1px solid #555;
     box-shadow: 0 0 3px #aaa;
-    padding-right:70px;/*увеличение отступа с помощью css3 анимации*/
+    padding-right:50px;/*увеличение отступа с помощью css3 анимации*/
     -moz-transition: padding .25s;
     -webkit-transition: padding .25s;
     -o-transition: padding .25s;
@@ -629,8 +643,26 @@ ul#breadcrumbs-one{
     box-shadow: 0 0 5px #76B148;
     border-color: green;
 }
-
+.gbformbox .has-error textarea, 
+.gbformbox .has-success textarea,
+ .gbformbox .required textarea{
+    background-position: 96% center; 
+}    
 /*оформление help-block*/
+.gbformbox .help-block{
+    display: inline-block;
+    color:red;
+    width:25%;
+    padding-left: 10px;
+    position: relative;
+    top:4px;
+    padding: 5px;
+    float: left;
+    word-break:break-all;/*чтобы слова переносились и растягивали блок*/
+}
+.help-message{
+    display: inline;
+}
 .gbformbox .help-block i.fa{
     display: none;
     margin-right: 4px;
@@ -642,10 +674,14 @@ ul#breadcrumbs-one{
 }
 .gbformbox .has-success .help-block,
 .gbformbox .has-error .help-block{
-    border-radius: 3px 3px 3px 3px;
+    border-radius: 3px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    -ms-border-radius: 3px;
+    -o-border-radius: 3px;
     color: white;
     margin-left:8px;
-    padding: 1px 6px;
+/*    padding: 1px 6px;*/
     z-index: 999;
     transition: 0.2s;
     
@@ -659,6 +695,8 @@ ul#breadcrumbs-one{
 }
 .gbformbox .has-success .help-block{
     background: green;
+    width:auto;
+    
 }
 .gbformbox .has-error .help-block{
     background: red;
@@ -716,7 +754,17 @@ button.submit:active {
     -ms-box-shadow: 0 0 10px 5px #356b0b inset;
     -o-box-shadow: 0 0 10px 5px #356b0b inset;
 }
-
+/*стили капчи*/
+div.image_code{
+    float: left;
+    
+}
+a#refresh_captcha{
+    display: block;
+}
+.gbformbox input.my-captcha-input{
+    width: 15%;
+}
 
 /*/----------------------форма отправки сообщения в гостевой книге----------------------*/
 

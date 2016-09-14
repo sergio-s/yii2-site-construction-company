@@ -13,6 +13,8 @@ return [
                 
                 'gb/<pageNum:\d+>' => 'guest-book/index',
                 'gb' => 'guest-book/index',
+                'gb/captcha' => 'guest-book/captcha',
+                'gb/form' => 'guest-book/form',
                 
                 '/' => 'page/home',
                 '<alias:[\w_-]+>' => 'page/normal',
