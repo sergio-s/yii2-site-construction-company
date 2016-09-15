@@ -1,2 +1,6 @@
 /index.php
 /index-test.php
+#/images/*
+*.jpg
+*.png
+*.gif
