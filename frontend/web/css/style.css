@@ -402,6 +402,9 @@ ul#breadcrumbs-one{
     border:1px rgba(147, 171, 188, 0.5) dotted;
     margin-bottom: 20px;
 }
+.block-message > div{
+    overflow: hidden;
+}
 .block-message:nth-child(2n){
     background-color: #ECF3F7 !important;
     
@@ -458,6 +461,7 @@ ul#breadcrumbs-one{
     border-bottom: 1px rgba(147, 171, 188, 0.7) dotted;
     margin-bottom: 15px;
     padding-bottom: 15px;
+    overflow: hidden;
 }
 .l-header ul{
     overflow: hidden;
@@ -481,25 +485,40 @@ ul#breadcrumbs-one{
 .answer{
     background-color: #fff;
     border-radius: 4px;
-    margin:20px 0;
+/*    margin:20px 0;*/
     position: relative;
+    border:1px rgba(147, 171, 188, 0.5) solid;
 }
 .answer > div{
     overflow: hidden;
 }
-.answer::after {
-    content: ''; 
-    position: absolute; /* Абсолютное позиционирование */
-    left: 20px; top: -28px; /* Положение треугольника */
-    border: 14px solid transparent; /* Прозрачные границы */
-    border-bottom: 14px solid #fff; /* Добавляем треугольник */
-   }
+.answer::after,
+.answer::before{
+    content: '';
+    border: solid transparent;
+    position: absolute;
+    left: 5%;
+    margin-left: -12px;
+    top: -27px;
+    width: 0;
+}
+.answer::before{
+    border-bottom-color: rgba(147, 171, 188, 0.5);
+    border-width: 12px;
+    top: -25px;
+}
+.answer::after{
+    border-bottom-color: #fff;
+    border-width: 16px;
+    margin-left: -16px;
+}
 .img-gb-admin{
     border-radius: 50%;
     display: table;
     border:1px rgba(70, 136, 71, 0.5) solid;
     padding: 6px;
     background-color: rgba(70, 136, 71, 0.2);
+    
 }
 
 /*-------------------------форма отправки сообщения в гостевой книге---------------------*/

@@ -14,6 +14,8 @@ class GbForm extends Model
     public $message;
     public $captcha;
     
+    public $parent_id;//hidden (id parent message)
+    
     const VISITOR_TYPE_GUEST = 'guest';
     const VISITOR_TYPE_REGISTERED = 'registered';
     
@@ -29,12 +31,14 @@ class GbForm extends Model
                 'visitor_city', 
                 'subject', 
                 'message',
-                'captcha'
+                'captcha',
+                'parent_id'
             ];
         $scenarios[self::SCENARIO_REGISTERED] = [
                 'visitor_city', 
                 'subject', 
-                'message'
+                'message',
+                'parent_id'
             ];
         
         return $scenarios;
@@ -52,7 +56,12 @@ class GbForm extends Model
             [['visitor_name', 'visitor_city', 'subject'], 'string', 'max' => 60],
             [['message'], 'string', 'max' => 1000],
             ['captcha', 'captcha', 'captchaAction' => 'guest-book/captcha'],
-//            ['visitor_city', 'safe'],
+            ['parent_id', 'safe'],
+            
+            //обработка
+            [['visitor_name', 'visitor_city', 'subject', 'message'], 'trim'],
+            ['parent_id', 'default', 'value' => 0],
+            
         ];
     }
 

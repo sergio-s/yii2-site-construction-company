@@ -15,7 +15,7 @@ $script = <<< JS
         $("#my-captcha-image").yiiCaptcha('refresh');
 });       
             
-//$('#my-captcha-image').trigger('click');        
+$('#my-captcha-image').trigger('click');        
 JS;
 $this->registerJs($script, yii\web\View::POS_READY);
 
@@ -24,9 +24,9 @@ $this->registerJs($script, yii\web\View::POS_READY);
 <?php $form = ActiveForm::begin([
     'id' => 'gb-form',
 //    'validateOnBlur' => false,
-    'action' => Url::to(['guest-book/form']),
+    'action' => Url::to(['guest-book/index']),
     'options'=>[
-        'autocomplete'=>'off',
+//        'autocomplete'=>'off',
         'method' => 'post', 
     ],
 
@@ -83,6 +83,8 @@ $this->registerJs($script, yii\web\View::POS_READY);
                             ],
                             'options' => ['class' => 'my-captcha-input'],
     ])->hint('Введите цифры с картинки') ?>
+
+<?php echo $form->field($gbForm, 'parent_id', ['template' => '{input}'])->hiddenInput(['id' => 'gbHiddenInputParentId']); ?>
 
 <div class="form-group">
     <?= Html::submitButton('Опубликовать', ['class' => 'submit']) ?>

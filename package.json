@@ -1,0 +1,27 @@
+{
+  "name": "yii2-stroysite",
+  "version": "1.0.0",
+  "description": "Site for a construction company via yii2 php framework ===========================================================",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://Sergio-s@github.com/sergio-s/yii2-site-construction-company.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sergio-s/yii2-site-construction-company/issues"
+  },
+  "homepage": "https://github.com/sergio-s/yii2-site-construction-company#readme",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-sass": "^2.3.2",
+    "gulp-sourcemaps": "^1.6.0"
+  }
+}

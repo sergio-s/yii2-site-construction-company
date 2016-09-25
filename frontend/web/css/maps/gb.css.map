@@ -1,0 +1,1 @@
+{"version":3,"file":"gb.css","sources":["gb.scss"],"sourcesContent":["// styles.scss\n.testing {\n  width: percentage(5/7);\n  height: 2px;\n  color: black;\n  font-size: 6686px; \n}\n"],"mappings":"AACA,AAAA,QAAQ,AAAC,CACP,KAAK,CAAE,SAAU,CACjB,MAAM,CAAE,GAAI,CACZ,KAAK,CAAE,KAAM,CACb,SAAS,CAAE,MAAO,CACnB","names":[],"sourceRoot":"/source/"}

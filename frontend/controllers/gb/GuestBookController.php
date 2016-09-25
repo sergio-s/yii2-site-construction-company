@@ -23,6 +23,7 @@ class GuestBookController extends BaseFront
         
         if ($action->id === 'index') {
             $this->layout = '@app/views/layouts/tpl/photogalery';
+            //$this->createAction('captcha')->getVerifyCode(true);//разрешаем обновление кода капчи при рефреше
         }
         return parent::beforeAction($action);
     }
@@ -37,6 +38,7 @@ class GuestBookController extends BaseFront
                 'minLength' => 3, // минимальное количество символов
                 'maxLength' => 5, // максимальное
                 'offset' => 5, // расстояние между символами (можно отрицательное)
+                
             ],
         ];
     }
@@ -51,15 +53,24 @@ class GuestBookController extends BaseFront
         
         if(Yii::$app->user->isGuest){
             $gbForm->scenario = GbForm::SCENARIO_GUEST;
-            $visitor_type = GbForm::VISITOR_TYPE_GUEST;
+            $gb->visitor_type = GbForm::VISITOR_TYPE_GUEST;
         }else{
             $gbForm->scenario = GbForm::SCENARIO_REGISTERED;
-            $visitor_type = GbForm::VISITOR_TYPE_REGISTERED;
+            $gb->visitor_type = GbForm::VISITOR_TYPE_REGISTERED;
         }
         
         if ($gbForm->load(Yii::$app->request->post()) && $gbForm->validate()){
-            $gb->ip = Yii::$app->getRequest()->getUserIP();
-            $gb->visitor_type = Yii::$app->getRequest()->getUserIP();
+            $gb->parent_id = $gbForm->parent_id;//id сообщ. на которое ответили
+            $gb->visitor_name = $gbForm->visitor_name;//из input
+            $gb->visitor_city = $gbForm->visitor_city;//из input
+            $gb->subject = $gbForm->subject;//из input
+            $gb->message = $gbForm->message;//из input
+            
+            
+            if($gb->validate() && $gb->save()){
+                return $this->redirect(['index']);
+            }
+                
         }
         
         return $this->render('index',[

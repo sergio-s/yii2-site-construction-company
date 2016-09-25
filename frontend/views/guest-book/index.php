@@ -10,6 +10,8 @@ use yii\widgets\LinkPager;//для пагинации
 use yii\widgets\ActiveForm;
 use yii\captcha\Captcha;
 
+//\frontend\assets\GuestBookAsset::register($this);
+
 $this->params['breadcrumbs'][] = strip_tags(trim($section->title));
 
 ?>
@@ -24,6 +26,7 @@ $this->params['breadcrumbs'][] = strip_tags(trim($section->title));
     
     
     <div class="block-message">
+        <div>
         <div class="col-80">
             <div class="padding-20">
                 <div class="l-header">
@@ -35,27 +38,33 @@ $this->params['breadcrumbs'][] = strip_tags(trim($section->title));
                         <li class="user-login">Василий</li>
                         <i class="fa fa-angle-double-right" aria-hidden="true"></i>
                         <li class="gb-message-time">2016.08.31, 16:46 </li>
-                    </ul>    
+                    </ul> 
+                    <a href="">Ответить</a>
+                    <a href="">Изменить</a>
+                    <a href="">Удалить</a>
+                    <a href="">Деактивировать</a>
+                    
                 </div>
                 <div class="r-content">
                     <div class="r-content-question">
-                            Все говорят, что нужно кем-то мне становиться.
+                        Все говорят, что нужно кем-то мне становиться.
                         А я бы хотел остаться собой.Все говорят, что нужно кем-то мне становиться.
                         А я бы хотел остаться собой.Все говорят, что нужно кем-то мне становиться.
                         А я бы хотел остаться собой.Все говорят, что нужно кем-то мне становиться.
                         А я бы хотел остаться собой.Все говорят, что нужно кем-то мне становиться.
                         А я бы хотел остаться собой.Все говорят, что нужно кем-то мне становиться.
                         А я бы хотел остаться собой.
+                        
                     </div>
-                    
                 </div>
+                
             </div>    
         </div>
         
         <div class="col-20">
             <div class="padding-20 r-block-gb">
                 <div class="img-gb-box">
-                    <?php echo Html::img('@avatar-img-web/default.jpg', ['alt' => '', 'class' => 'img-gb-default']); ?>
+                    <?php echo Html::img('@avatar-img-web/default.png', ['alt' => '', 'class' => 'img-gb-default']); ?>
                 </div>
                 
                 
@@ -67,7 +76,7 @@ $this->params['breadcrumbs'][] = strip_tags(trim($section->title));
             </div>
             
         </div>
-        
+        </div>
         <!--ответ админа-->
         <div class="padding-20">
             <div class="answer">
@@ -145,7 +154,7 @@ $this->params['breadcrumbs'][] = strip_tags(trim($section->title));
         <div class="col-20">
             <div class="padding-20 r-block-gb">
                 <div class="img-gb-box">
-                    <?php echo Html::img('@avatar-img-web/default.jpg', ['alt' => '', 'class' => 'img-gb-default']); ?>
+                    <?php echo Html::img('@avatar-img-web/default.png', ['alt' => '', 'class' => 'img-gb-default']); ?>
                 </div>
                 
                 
@@ -189,7 +198,7 @@ $this->params['breadcrumbs'][] = strip_tags(trim($section->title));
         <div class="col-20">
             <div class="padding-20 r-block-gb">
                 <div class="img-gb-box">
-                    <?php echo Html::img('@avatar-img-web/default.jpg', ['alt' => '', 'class' => 'img-gb-default']); ?>
+                    <?php echo Html::img('@avatar-img-web/default.png', ['alt' => '', 'class' => 'img-gb-default']); ?>
                 </div>
                 
                 
