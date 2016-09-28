@@ -10,7 +10,7 @@ use yii\widgets\LinkPager;//для пагинации
 use yii\widgets\ActiveForm;
 use yii\captcha\Captcha;
 
-//\frontend\assets\GuestBookAsset::register($this);
+\frontend\assets\GuestBookAsset::register($this);
 
 $this->params['breadcrumbs'][] = strip_tags(trim($section->title));
 
@@ -24,6 +24,89 @@ $this->params['breadcrumbs'][] = strip_tags(trim($section->title));
         <?= $this->render('form',['gbForm'  => $gbForm]) ?>
     </div>
     
+    <!--new style-->
+    <ul id="messageList">
+        <!--первое сообщение-->
+        <li class="message">
+            <div class="messageBox">
+                <div class="leftPart">
+                    <div class="mesHeader">
+                        <p class="gb-mesTheme">Ремонт ванной</p>
+                        <p class="gb-mesData">
+                            <span class="gb-mesAuthorName">Василий</span>
+                            <span class="gb-mesDateTime">2016.08.31, 16:46 </span>
+                        </p>
+                    </div>
+                    <div class="mesContent">
+                        Все говорят, что нужно кем-то мне становиться. А я бы хотел остаться собой.Все говорят, что нужно кем-то мне становиться. А я бы хотел остаться собой.Все говорят, что нужно кем-то мне становиться. А я бы хотел остаться собой.Все говорят, что нужно кем-то мне становиться. А я бы хотел остаться собой.Все говорят, что нужно кем-то мне становиться. А я бы хотел остаться собой.Все говорят, что нужно кем-то мне становиться. А я бы хотел остаться собой. Все говорят, что нужно кем-то мне становиться. А я бы хотел остаться собой.Все говорят, что нужно кем-то мне становиться. А я бы хотел остаться собой.Все говорят, что нужно кем-то мне становиться. А я бы хотел остаться собой.Все говорят, что нужно кем-то мне становиться. А я бы хотел остаться собой.Все говорят, что нужно кем-то мне становиться. А я бы хотел остаться собой.Все говорят, что нужно кем-то мне становиться. А я бы хотел остаться собой. Все говорят, что нужно кем-то мне становиться. А я бы хотел остаться собой.Все говорят, что нужно кем-то мне становиться. А я бы хотел остаться собой.Все говорят, что нужно кем-то мне становиться. А я бы хотел остаться собой.Все говорят, что нужно кем-то мне становиться. А я бы хотел остаться собой.Все говорят, что нужно кем-то мне становиться. А я бы хотел остаться собой.Все говорят, что нужно кем-то мне становиться. А я бы хотел остаться собой. Все говорят, что нужно кем-то мне становиться. А я бы хотел остаться собой.Все говорят, что нужно кем-то мне становиться. А я бы хотел остаться собой.Все говорят, что нужно кем-то мне становиться. А я бы хотел остаться собой.Все говорят, что нужно кем-то мне становиться. А я бы хотел остаться собой.Все говорят, что нужно кем-то мне становиться. А я бы хотел остаться собой.Все говорят, что нужно кем-то мне становиться. А я бы хотел остаться собой. 
+                    </div>
+                </div>
+                <div class="rightPart">
+                    <div class="gb-avatarbBox">
+                        <?php echo Html::img('@avatar-img-web/default.png', ['alt' => '', 'class' => 'gb-avatarImg gb-avatarImgDefault']); ?>
+                    </div>
+                    <ul class="gb-userData">
+                        <li class="gb-userLogin">Василий</li>
+                        <li class="gb-userRole"><i>Гость</i></li>
+                        <li class="gb-userCity">Харьков</li>
+                    </ul>
+                    
+                    
+                </div>
+            </div>
+            <!--дочерний стиль.-->
+            <ul class="children">
+                <li class="message">
+                    <div class="messageBox">
+                
+                    </div>
+                </li>
+            </ul>
+        </li>
+        
+        <!--второе сообщение-->
+        <li class="message">
+            <div class="messageBox">
+                <div class="leftPart">
+                    <div class="mesHeader">
+                        <p class="gb-mesTheme">Ремонт ванной</p>
+                        <p class="gb-mesData">
+                            <span class="gb-mesAuthorName">Василий</span>
+                            <span class="gb-mesDateTime">2016.08.31, 16:46 </span>
+                        </p>
+                    </div>
+                    <div class="mesContent">
+                        Все говорят, что нужно кем-то мне становиться. А я бы хотел остаться собой.Все говорят, что нужно кем-то мне становиться. А я бы хотел остаться собой.Все говорят, что нужно кем-то мне становиться. А я бы хотел остаться собой.Все говорят, что нужно кем-то мне становиться. А я бы хотел остаться собой.Все говорят, что нужно кем-то мне становиться. А я бы хотел остаться собой.Все говорят, что нужно кем-то мне становиться. А я бы хотел остаться собой. 
+                    </div>
+                </div>
+                <div class="rightPart">
+                    <div class="gb-avatarbBox">
+                        <?php echo Html::img('@avatar-img-web/default.png', ['alt' => '', 'class' => 'gb-avatarImg gb-avatarImgDefault']); ?>
+                    </div>
+                    <ul class="gb-userData">
+                        <li class="gb-userLogin">Василий</li>
+                        <li class="gb-userRole"><i>Гость</i></li>
+                        <li class="gb-userCity">Харьков</li>
+                    </ul>
+                    
+                    
+                </div>
+            </div>
+            <!--дочерний стиль.-->
+            <ul class="children">
+                <li class="message">
+                    <div class="messageBox">
+                
+                    </div>
+                </li>
+            </ul>
+        </li>
+        
+    </ul>
+    
+   
+    
+    <!--new style-->
     
     <div class="block-message">
         <div>

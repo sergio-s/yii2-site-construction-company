@@ -28,7 +28,7 @@ $this->params['breadcrumbs'][] = strip_tags(trim($pic->h1));
         <figure class="img-indent2 frame2" style="margin-bottom: 30px;">
             
         <!--loupe-->
-            <a class="loupe" href="<?= Yii::getAlias('@photogalery-web/photos/big/'. $pic->imgSrc); ?>">
+            <a class="loupe" href="<?= Yii::getAlias('@photogalery-web/photos/origin/'. $pic->imgSrc); ?>">
                 <?php echo Html::img('@photogalery-web/photos/middle/' . $pic->imgSrc, ['alt' => $pic->h1,'style'=> 'width:100%;','class' => 'zoom' ]); ?>
             </a>
         

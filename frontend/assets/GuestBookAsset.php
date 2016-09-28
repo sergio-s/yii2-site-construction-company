@@ -13,10 +13,12 @@ class GuestBookAsset extends AssetBundle
     public $baseUrl = '@web';
     
     public $css = [
+        'css/gb.css',
     ];
     
     public $js = [
         'js/guest-book.js',
+        
         
     ];
     public $depends = [

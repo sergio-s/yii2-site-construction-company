@@ -23,7 +23,9 @@ InitTempScripts::register($this);
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <?= Html::csrfMetaTags() ?>
     <title><?= Html::encode($this->title) ?></title>
+    
     <?php $this->head() ?>
+    
 </head>
 <body>
 <?php $this->beginBody() ?>
@@ -150,7 +152,7 @@ InitTempScripts::register($this);
                         <article class="grid_8">
                                 <h3 class="p2">Selection &amp; Installation</h3>
                             <div class="wrapper">
-                                <figure class="img-indent2 frame2"><?php echo Html::img('@images-web/style/page2-img2.jpg', ['alt'=>'', 'class'=>'']);?></figure>
+                                <figure class="img-indent2 frame2"><?php echo Html::img('@css-img-web/page2-img2.jpg', ['alt'=>'', 'class'=>'']);?></figure>
                                 <div class="extra-wrap">
                                         <h6 class="p1">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias.</h6>
                                     Excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctioam libero tempore cum soluta.
