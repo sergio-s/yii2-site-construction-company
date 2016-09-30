@@ -8,6 +8,8 @@ $colorLighterBlue: #ECF3F7;
 $colorWhite: #ffffff;
 $colorDarckBlue: rgba(147, 171, 188, 0.5);
 $color-half50-DarckBlue: rgba($colorDarckBlue,.2);
+$colorBlue: #105289;//используется для текста
+
 
 $bgColorMessage_1   : $colorLightBlue; // цвет
 $bgColorMessage_2   : $colorLighterBlue; // цвет
@@ -22,6 +24,9 @@ $leftColWidth: 85%;
 $rightColWidth: 15%;
 $leftColWidth_admin: 15%;
 $rightColWidth_admin: 85%;
+
+$fontSizeTheme: 18px;
+$fontSizeMesData: 14px;
 
 //примеси
 @mixin singleBorder($size:1px, $color: $colorDarckBlue, $style: dotted, $position: false) {
@@ -39,6 +44,12 @@ $rightColWidth_admin: 85%;
 @mixin col-Style($width, $float) {
     width: $width;
     float: $float;
+}
+
+//примеси для оформления шрифтов
+@mixin iconAlign($line-height, $vertical-align: text-top) {
+    line-height: $line-height;
+    vertical-align: $vertical-align;
 }
 
 /*Блоки сообщений*/
@@ -84,8 +95,46 @@ $rightColWidth_admin: 85%;
     box-sizing: border-box;
     background-color: $colorWhite;
 }
+.mesHeader{
+    @include singleBorder(1px, $colorDarckBlue, dotted, bottom);
+    margin-bottom: $colorBlue;
     
-    
+    .gb-mesTheme{
+        font-size: 18px;
+        color: $colorBlue;
+        @include iconAlign($fontSizeTheme);
+    }
+    .gb-mesData{
+        fotn-size:$fontSizeMesData;
+        .gb-mesAuthorName{
+            color: $colorBlue;
+            font-weight: bold;
+        }
+        .gb-mesDateTime{
+            
+        }
+        .fa{
+            @include iconAlign($fontSizeMesData);
+        }
+    }
+}  
+
+.gb-userData{
+    .gb-userLogin{
+        color: $colorBlue;
+        font-weight: bold;
+    }
+}
+ 
+ul.gb-adminLinks{
+    display: table;
+    overflow: hidden;
+    padding-bottom:$paddingMessage;
+    li{
+        float: left;
+        margin-right: $paddingMessage;
+    }
+}
 
 /*Старые стили*/
 

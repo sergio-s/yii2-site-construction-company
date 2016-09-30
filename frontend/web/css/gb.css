@@ -58,6 +58,48 @@
   background-color: #ffffff;
 }
 
+.mesHeader {
+  border-bottom: 1px rgba(147, 171, 188, 0.5) dotted;
+  margin-bottom: #105289;
+}
+
+.mesHeader .gb-mesTheme {
+  font-size: 18px;
+  color: #105289;
+  line-height: 18px;
+  vertical-align: text-top;
+}
+
+.mesHeader .gb-mesData {
+  fotn-size: 14px;
+}
+
+.mesHeader .gb-mesData .gb-mesAuthorName {
+  color: #105289;
+  font-weight: bold;
+}
+
+.mesHeader .gb-mesData .fa {
+  line-height: 14px;
+  vertical-align: text-top;
+}
+
+.gb-userData .gb-userLogin {
+  color: #105289;
+  font-weight: bold;
+}
+
+ul.gb-adminLinks {
+  display: table;
+  overflow: hidden;
+  padding-bottom: 20px;
+}
+
+ul.gb-adminLinks li {
+  float: left;
+  margin-right: 20px;
+}
+
 /*Старые стили*/
 .block-message {
   background-color: #E1EBF2;
@@ -541,6 +583,162 @@ a#refresh_captcha {
 ----*/
 
 /*# sourceMappingURL=maps/gb.css.map */
+
+/*# sourceMappingURL=../../../maps/frontend/web/css/gb.css.map */
+
+/*# sourceMappingURL=../../../maps/frontend/web/css/gb.css.map */
+
+/*# sourceMappingURL=../../../maps/frontend/web/css/gb.css.map */
+
+/*# sourceMappingURL=../../../maps/frontend/web/css/gb.css.map */
+
+/*# sourceMappingURL=../../../maps/frontend/web/css/gb.css.map */
+
+/*# sourceMappingURL=../../../maps/frontend/web/css/gb.css.map */
+
+/*# sourceMappingURL=../../../maps/frontend/web/css/gb.css.map */
+
+/*# sourceMappingURL=../../../maps/frontend/web/css/gb.css.map */
+
+/*# sourceMappingURL=../../../maps/frontend/web/css/gb.css.map */
+
+/*# sourceMappingURL=../../../maps/frontend/web/css/gb.css.map */
+
+/*# sourceMappingURL=../../../maps/frontend/web/css/gb.css.map */
+
+/*# sourceMappingURL=../../../maps/frontend/web/css/gb.css.map */
+
+/*# sourceMappingURL=../../../maps/frontend/web/css/gb.css.map */
+
+/*# sourceMappingURL=../../../maps/frontend/web/css/gb.css.map */
+
+/*# sourceMappingURL=../../../maps/frontend/web/css/gb.css.map */
+
+/*# sourceMappingURL=../../../maps/frontend/web/css/gb.css.map */
+
+/*# sourceMappingURL=../../../maps/frontend/web/css/gb.css.map */
+
+/*# sourceMappingURL=../../../maps/frontend/web/css/gb.css.map */
+
+/*# sourceMappingURL=../../../maps/frontend/web/css/gb.css.map */
+
+/*# sourceMappingURL=../../../maps/frontend/web/css/gb.css.map */
+
+/*# sourceMappingURL=../../../maps/frontend/web/css/gb.css.map */
+
+/*# sourceMappingURL=../../../maps/frontend/web/css/gb.css.map */
+
+/*# sourceMappingURL=../../../maps/frontend/web/css/gb.css.map */
+
+/*# sourceMappingURL=../../../maps/frontend/web/css/gb.css.map */
+
+/*# sourceMappingURL=../../../maps/frontend/web/css/gb.css.map */
+
+/*# sourceMappingURL=../../../maps/frontend/web/css/gb.css.map */
+
+/*# sourceMappingURL=../../../maps/frontend/web/css/gb.css.map */
+
+/*# sourceMappingURL=../../../maps/frontend/web/css/gb.css.map */
+
+/*# sourceMappingURL=../../../maps/frontend/web/css/gb.css.map */
+
+/*# sourceMappingURL=../../../maps/frontend/web/css/gb.css.map */
+
+/*# sourceMappingURL=../../../maps/frontend/web/css/gb.css.map */
+
+/*# sourceMappingURL=../../../maps/frontend/web/css/gb.css.map */
+
+/*# sourceMappingURL=../../../maps/frontend/web/css/gb.css.map */
+
+/*# sourceMappingURL=../../../maps/frontend/web/css/gb.css.map */
+
+/*# sourceMappingURL=../../../maps/frontend/web/css/gb.css.map */
+
+/*# sourceMappingURL=../../../maps/frontend/web/css/gb.css.map */
+
+/*# sourceMappingURL=../../../maps/frontend/web/css/gb.css.map */
+
+/*# sourceMappingURL=../../../maps/frontend/web/css/gb.css.map */
+
+/*# sourceMappingURL=../../../maps/frontend/web/css/gb.css.map */
+
+/*# sourceMappingURL=../../../maps/frontend/web/css/gb.css.map */
+
+/*# sourceMappingURL=../../../maps/frontend/web/css/gb.css.map */
+
+/*# sourceMappingURL=../../../maps/frontend/web/css/gb.css.map */
+
+/*# sourceMappingURL=../../../maps/frontend/web/css/gb.css.map */
+
+/*# sourceMappingURL=../../../maps/frontend/web/css/gb.css.map */
+
+/*# sourceMappingURL=../../../maps/frontend/web/css/gb.css.map */
+
+/*# sourceMappingURL=../../../maps/frontend/web/css/gb.css.map */
+
+/*# sourceMappingURL=../../../maps/frontend/web/css/gb.css.map */
+
+/*# sourceMappingURL=../../../maps/frontend/web/css/gb.css.map */
+
+/*# sourceMappingURL=../../../maps/frontend/web/css/gb.css.map */
+
+/*# sourceMappingURL=../../../maps/frontend/web/css/gb.css.map */
+
+/*# sourceMappingURL=../../../maps/frontend/web/css/gb.css.map */
+
+/*# sourceMappingURL=../../../maps/frontend/web/css/gb.css.map */
+
+/*# sourceMappingURL=../../../maps/frontend/web/css/gb.css.map */
+
+/*# sourceMappingURL=../../../maps/frontend/web/css/gb.css.map */
+
+/*# sourceMappingURL=../../../maps/frontend/web/css/gb.css.map */
+
+/*# sourceMappingURL=../../../maps/frontend/web/css/gb.css.map */
+
+/*# sourceMappingURL=../../../maps/frontend/web/css/gb.css.map */
+
+/*# sourceMappingURL=../../../maps/frontend/web/css/gb.css.map */
+
+/*# sourceMappingURL=../../../maps/frontend/web/css/gb.css.map */
+
+/*# sourceMappingURL=../../../maps/frontend/web/css/gb.css.map */
+
+/*# sourceMappingURL=../../../maps/frontend/web/css/gb.css.map */
+
+/*# sourceMappingURL=../../../maps/frontend/web/css/gb.css.map */
+
+/*# sourceMappingURL=../../../maps/frontend/web/css/gb.css.map */
+
+/*# sourceMappingURL=../../../maps/frontend/web/css/gb.css.map */
+
+/*# sourceMappingURL=../../../maps/frontend/web/css/gb.css.map */
+
+/*# sourceMappingURL=../../../maps/frontend/web/css/gb.css.map */
+
+/*# sourceMappingURL=../../../maps/frontend/web/css/gb.css.map */
+
+/*# sourceMappingURL=../../../maps/frontend/web/css/gb.css.map */
+
+/*# sourceMappingURL=../../../maps/frontend/web/css/gb.css.map */
+
+/*# sourceMappingURL=../../../maps/frontend/web/css/gb.css.map */
+
+/*# sourceMappingURL=../../../maps/frontend/web/css/gb.css.map */
+
+/*# sourceMappingURL=../../../maps/frontend/web/css/gb.css.map */
+
+/*# sourceMappingURL=../../../maps/frontend/web/css/gb.css.map */
+
+/*# sourceMappingURL=../../../maps/frontend/web/css/gb.css.map */
+
+/*# sourceMappingURL=../../../maps/frontend/web/css/gb.css.map */
+
+/*# sourceMappingURL=../../../maps/frontend/web/css/gb.css.map */
+
+/*# sourceMappingURL=../../../maps/frontend/web/css/gb.css.map */
+
+/*# sourceMappingURL=../../../maps/frontend/web/css/gb.css.map */
 
 /*# sourceMappingURL=../../../maps/frontend/web/css/gb.css.map */
 
