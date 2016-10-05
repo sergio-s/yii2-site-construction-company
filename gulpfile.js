@@ -17,6 +17,7 @@ var runSequence = require('run-sequence');//для последовательн�
 var webDir = 'frontend/web';
 var sassDir = webDir + '/scss';
 var targetCssDir = webDir + '/css';
+var targetCssDirMin = targetCssDir + '/min';//minimazed styles
 
 
 
@@ -29,55 +30,76 @@ var sassOptions = {
     outputStyle: 'expanded'
 };
 
+// Bootstrap scss source
+var bootstrapSassSource = {
+    in: './node_modules/bootstrap-sass/'
+};
+var customBootstrapScssDir =  sassDir + '/my_bootstrap';
+var customBootstrapScssFile = customBootstrapScssDir + '/custom_bootstrap3.scss';//мой кастомный файл scss (главный)
+var dirCustomBootstrap = {
+    nested: targetCssDir + '/custom_bootstrap3',
+    min: targetCssDirMin + '/custom_bootstrap3'
+    };
 
 //------------------------------------------------------------------------------
-// компиляция sass
+//                  компиляция sass
 //------------------------------------------------------------------------------
 gulp.task('compileSass', function(){
   return gulp
-    .src(sassDir + '/**/*.scss')// Получаем все файлы с окончанием .scss в папке app/scss и дочерних директориях
-    .pipe(sourcemaps.init())
+    .src([
+            sassDir + '/**/*.scss', 
+            '!' + customBootstrapScssDir + '/'
+        ])// Получаем все файлы с окончанием .scss в папке app/scss и дочерних директориях
+    //.pipe(sourcemaps.init())
     .pipe(sass(sassOptions).on('error', sass.logError)) // Конвертируем Sass в CSS с помощью gulp-sass
-    .pipe(sourcemaps.write('./maps'))
+    //.pipe(sourcemaps.write('./maps'))
     .pipe(gulp.dest(targetCssDir))
     .pipe(notify("Sass was compiled to css!"));
 });
 
 
 //------------------------------------------------------------------------------
-//Добавление префиксов для css3
+//                  компиляция custom twitter bootstrsp 3 из sass
+//------------------------------------------------------------------------------
+gulp.task('compileCustomBootstrap3', function(){
+  return gulp
+    .src(customBootstrapScssFile)
+    //.pipe(sourcemaps.init())
+    .pipe(sass({
+                outputStyle: 'nested',
+                precison: 3,
+                errLogToConsole: true,
+                includePaths: [
+                    bootstrapSassSource.in + 'assets/stylesheets'//пути к ресурсам импорта прописанным в customBootstrapScssFile
+//                    bootstrapSassSource.in + 'assets/fonts'
+                ]
+            })
+    .on("error", sass.logError)) 
+    //.pipe(sourcemaps.write('./maps'))
+    .pipe(gulp.dest(dirCustomBootstrap.nested))
+    .pipe(notify("Sass Bootstrap was compiled to css!"));
+});
+
+
+//------------------------------------------------------------------------------
+//                  Добавление префиксов для css3
 //------------------------------------------------------------------------------
 //Перезаписывает файлы в папке css, добавляя префиксы css3 где нет. Также запускается при compileSass
 //gulp.task('autoPrefixer', ['compileSass'], function(){
 gulp.task('autoPrefixer', function(){
     return gulp
-        .src(targetCssDir + '/*.css', {base: './'})
-        .pipe(sourcemaps.init())
+        .src([targetCssDir + '/*.css', dirCustomBootstrap.nested + '/*.css'], {base: './'})
+        //.pipe(sourcemaps.init())
         .pipe(autoprefixer({
             browsers: ['last 3 versions', '> 5%'],
             cascade: false
         }))
-        .pipe(sourcemaps.write('./maps'))
+        //.pipe(sourcemaps.write('./maps'))
         .pipe(gulp.dest('./'));//перезапись файлов
 });
 
-
-//gulp.task('concat-css', function() {
-//    return gulp.src(
-//        [
-//            targetCssDir + '/reset.css',
-//            targetCssDir + '/grid.css',
-//            targetCssDir + '/style.css',
-//            targetCssDir + '/gb.css'
-//        ]
-//    )
-//        .pipe(concat('app.css'))
-//        .pipe(gulp.dest(targetCssDir));
-//});
-
-
 //------------------------------------------------------------------------------
-//Минификация css
+//                  Минификация css
 //------------------------------------------------------------------------------
 gulp.task('minify-css', function(){
     return gulp
@@ -88,9 +110,20 @@ gulp.task('minify-css', function(){
         //.pipe(notify("Css filef was minimized and saved!"));
 });
 
+//------------------------------------------------------------------------------
+//                  Минификация custom twitter bootstrsp 3
+//------------------------------------------------------------------------------
+gulp.task('minifyCustomBootstrap', function(){
+    return gulp
+        .src(dirCustomBootstrap.nested + '/*.css')
+        .pipe(minifyCss({debug: false}))
+        .pipe(rename({suffix: '.min'}))
+        .pipe(gulp.dest(dirCustomBootstrap.min));
+        //.pipe(notify("Css filef was minimized and saved!"));
+});
 
 //------------------------------------------------------------------------------
-//оптимизация картинок css
+//                  оптимизация картинок css
 //------------------------------------------------------------------------------
 gulp.task('compressImg', function() {
     return gulp
@@ -148,8 +181,22 @@ gulp.task('startCompresIco', ['spriteIco', 'compressIco']);
 //Наблюдение за файлами. (запуск из консоли - gulp watch)
 //------------------------------------------------------------------------------
 gulp.task('watch', function(){
-  gulp.watch(sassDir + '/**/*.scss', ['compileSass']); //следить за всеми Sass файлами и запускать задачу sass при любом изменении
+  gulp.watch(sassDir + '/**/*.scss', ['compileSass', 'compileCustomBootstrap3']); //следить за всеми Sass файлами и запускать задачу sass при любом изменении
   gulp.watch(targetCssDir + '/*.css', ['autoPrefixer']);
-  gulp.watch(targetCssDir + '/*.css', ['minify-css']);
+  gulp.watch(targetCssDir + '/*.css', ['minify-css', 'minifyCustomBootstrap']);
   gulp.watch(targetCssDir + '/img/*', ['compressImg']);//при добавлении картинок в папку, они будут оптимизированы
 });
+
+
+//gulp.task('concat-css', function() {
+//    return gulp.src(
+//        [
+//            targetCssDir + '/reset.css',
+//            targetCssDir + '/grid.css',
+//            targetCssDir + '/style.css',
+//            targetCssDir + '/gb.css'
+//        ]
+//    )
+//        .pipe(concat('app.css'))
+//        .pipe(gulp.dest(targetCssDir));
+//});
