@@ -32,7 +32,7 @@ return [
             'cookieValidationKey' => 'shtrp[;p;,bnmqdbhmbnoytj,m485jhio-2',
         ],
         'user' => [
-            'identityClass' => 'common\models\User',
+            'identityClass' => 'common\models\users\User',
             'enableAutoLogin' => true,
             'identityCookie' => ['name' => '_identity-frontend', 'httpOnly' => true],
         ],

@@ -31,4 +31,42 @@ class GuestbookQuery extends \yii\db\ActiveQuery
     {
         return parent::one($db);
     }
+    
+//    public function whereStatus($status)
+//    {
+//        return $this->andWhere(['status' => $alias]);
+//    }
+    
+    /**
+     * @return $this
+     */
+    public function active()
+    {
+        $this->andWhere(['status' => GbEnum::STATUS_ACTIVE]);
+        return $this;
+    }
+    
+    /**
+     * @return $this
+     */
+    public function desabled()
+    {
+        $this->andWhere(['status' => GbEnum::STATUS_DISABLED]);
+        return $this;
+    }
+    
+    /**
+     * @return $this
+     */
+    public function spam()
+    {
+        $this->andWhere(['status' => GbEnum::STATUS_SPAM]);
+        return $this;
+    }
+    
+    //сообщение 0-го уровня
+    public function chiefAncestor()
+    {
+        return $this->andWhere(['parent_id' => 0]);
+    }
 }

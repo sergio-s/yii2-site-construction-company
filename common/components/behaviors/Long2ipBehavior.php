@@ -15,17 +15,7 @@ class Long2ipBehavior extends Behavior
      */
     public $attribute = 'ip';
     
-    /**
-     * Declares event handlers for the [[owner]]'s events.
-     *
-     * Child classes may override this method to declare what PHP callbacks should
-     * be attached to the events of the [[owner]] component.
-     *
-     * The callbacks will be attached to the [[owner]]'s events when the behavior is
-     * attached to the owner; and they will be detached from the events when
-     * the behavior is detached from the component.
-     *
-     **/
+    
     public function events()
     {
         return [
@@ -34,10 +24,7 @@ class Long2ipBehavior extends Behavior
         ];
     }
     
-    /**
-     * Before validate event
-     * !The ip param in db mast be integer type wich UNSIGNED attrbute
-     */
+    //запись ip в базу данных в виде int
     public function beforeValidate()
     {
         $attribute = $this->attribute;
@@ -45,6 +32,7 @@ class Long2ipBehavior extends Behavior
         $this->owner->$attribute = sprintf('%u', ip2long($ip));
     }
     
+    //извлечение ip из базы данных в виде int и конвертация в string
     public function afterFind()
     {
         $attribute = $this->attribute;

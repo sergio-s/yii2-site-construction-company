@@ -8,13 +8,17 @@ use yii\data\Pagination;
 use app\models\sections\Sections;
 use frontend\models\gb\GbForm;
 use app\models\gb\Guestbook;
+use app\models\gb\GbEnum;
+use app\models\tags\Tags;
 
 /**
  * PageController
  */
 class GuestBookController extends BaseFront
 {
-    private $pageSize = 6;//кол-во материалов на странице пагинации
+    use \common\traits\PageHelper;
+    
+    private $pageSize = 20;//кол-во материалов на странице пагинации
     private $section;
     
     public function beforeAction($action) 
@@ -48,38 +52,106 @@ class GuestBookController extends BaseFront
      */
     public function actionIndex($pageNum = null)
     {
-        $gbForm = new GbForm();
-        $gb = new Guestbook();
         
-        if(Yii::$app->user->isGuest){
-            $gbForm->scenario = GbForm::SCENARIO_GUEST;
-            $gb->visitor_type = GbForm::VISITOR_TYPE_GUEST;
-        }else{
-            $gbForm->scenario = GbForm::SCENARIO_REGISTERED;
-            $gb->visitor_type = GbForm::VISITOR_TYPE_REGISTERED;
+        //Work wich massages
+        //построение постраничной навигации
+        $query = Guestbook::getChiefId();//только id сообщений первого уровня
+
+        $redirectFromNum1 = Url::toRoute(['index'], true);
+        
+        //эксперимент
+        $cloneQuery = clone $query;
+        $totalCount = $cloneQuery->count();
+        $countPagin = ceil($totalCount / $this->pageSize);
+
+        //если введена еденица, делаем редирект на без 1
+        if($pageNum == 1)
+        {
+            return $this->redirect($redirectFromNum1);
         }
         
-        if ($gbForm->load(Yii::$app->request->post()) && $gbForm->validate()){
-            $gb->parent_id = $gbForm->parent_id;//id сообщ. на которое ответили
-            $gb->visitor_name = $gbForm->visitor_name;//из input
-            $gb->visitor_city = $gbForm->visitor_city;//из input
-            $gb->subject = $gbForm->subject;//из input
-            $gb->message = $gbForm->message;//из input
-            
-            
-            if($gb->validate() && $gb->save()){
-                return $this->redirect(['index']);
+        //если в адресной строке введен номер пагинации, котрого нет - выводим
+        if($pageNum > $countPagin)
+        {
+            throw new \yii\web\HttpException(404, 'Такой страницы не существует. ');
+        }
+        
+        $pagination = new Pagination([  'defaultPageSize' => $this->pageSize,//кол-во материалов на стр.
+                                        'totalCount' => $totalCount,//кол-во всех постов
+                                        'pageParam' => 'pageNum',
+                                        'forcePageParam' => false,
+                            ]);
+        //id chief messages in single pagination page
+        $paginChiefMesId = $query->offset($pagination->offset)
+                ->limit($pagination->limit)
+                ->all();
+        
+        $messagesTree = false;
+        
+        if (isset($paginChiefMesId) && !empty($paginChiefMesId)) {
+            $ids = [];
+
+            foreach ($paginChiefMesId as $messageChiefId) {
+                $ids[] = $messageChiefId->id;
             }
+
+            //$superParentsId = implode(',', $ids);
+            
+            //chief messages and  their descendants generated in single  page by pagination
+            $paginMessages = Guestbook::find()
+//                                            ->active()
+                                            ->where([
+//                                                        'super_parent_id' => $ids,//дочерние сообщения
+//                                                        'id' => $ids,
+                                                        'or', ['in', 'id', $ids], ['in', 'super_parent_id', $ids]
+                                                        
+                                                    ])
+                                            ->orderBy(['parent_id' => SORT_DESC, 'createdDate' => SORT_DESC])
+                                            //->with('author')//class Guestbook getAutor
+                                            ->all();
+
+            if (!empty($paginMessages)) {
+                //$start = microtime(true);
+                $messagesTree = Guestbook::buildTree($paginMessages);
+                //printf('Страница сгенерирована за %.5f сек.', round(microtime(true) - $start, 4));
+            }
+        }
+        
+        
+
+
+//        $redirectFromNum1 = Url::toRoute(['index'], true);
+//        list($pagination, $paginMessages, $totalCount) = static::buildPagination($query, $this->pageSize, $pageNum, $redirectFromNum1);
+        
+        //Work wich form
+        $gbForm = new GbForm();
+        
+        
+        
+        if ($gbForm->load(Yii::$app->request->post()) && $gbForm->validate()){
+                $gb = new Guestbook();
                 
+                //Записываем данные из модели формы в модель гостевой книги
+                $gb->parent_id = $gbForm->parent_id;//id сообщ. на которое ответили (hiddenInput)
+                $gb->visitor_name = $gbForm->visitor_name;//из input
+                $gb->visitor_city = $gbForm->visitor_city;//из input
+                $gb->message = $gbForm->message;//из input
+                $gb->tagsId = $gbForm->tags;
+                
+//                var_dump($gb);die;
+                if($gb->validate() && $gb->save()){
+                    return $this->redirect(['index']);
+                }
         }
         
         return $this->render('index',[
                                         'section' => $this->section,
                                         'gbForm'  => $gbForm,
                                         
-//                                        'paginCategories'   => $paginCategories,
-//                                        'pagination'        => $pagination,
-//                                        'totalCount'        => $totalCount
+                                        'messagesTree'      => $messagesTree,
+                                        'nestingLevel'      => GbEnum::NESTING_LEVEL,
+                                        'pagination'        => $pagination,
+                                        'totalCount'        => $totalCount
             
                                 ]);
     }

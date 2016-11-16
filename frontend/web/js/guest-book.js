@@ -1,5 +1,7 @@
 jQuery(document).ready(function($){
 
+//ОБРАБОТКА АДМИНИСТРАТИВНЫХ КНОПОК
+//заполнение скрытого поля при ответе на коментарий
 //при использовании pjax нужно искать ,начиная с body
         $('body').on( "click",'a.message-reply', function(event){
 

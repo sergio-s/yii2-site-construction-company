@@ -1,0 +1,49 @@
+/*пагинация*/
+.pagination-box {
+  display: table;
+  overflow: hidden;
+  margin: 20px auto;
+}
+
+.pagination-box ul > li {
+  float: left;
+  display: block;
+}
+
+.pagination-box ul > li a {
+    padding: 8px 16px;
+    display: inline-block;
+    text-decoration: none;
+/*  font-weight: bold;*/
+    color:$lime;
+    margin-right: 3px;
+    border-radius: $border-radius;
+    border:1px $colorLightBlue solid;
+    transition: background-color 0.5s ease;
+}
+
+.pagination-box ul > li a:hover {
+    border-color: lighten( $lime, 10% );
+    background-color: lighten( $lime, 30% );
+    color: #000;
+}
+
+.pagination-box ul > li.active a {
+    border-color: darken( $red, 20% );
+    background-color: lighten($red,20%);
+    background: linear-gradient(to top, darken( $red, 20% ), lighten($red,20%));
+    pointer-events: none;//отмена стандартного поведения ссылки
+    cursor: default;
+    
+}
+
+.pagination-box ul > li.active a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.disabled {
+  display: none !important;
+}
+

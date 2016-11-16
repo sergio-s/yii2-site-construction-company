@@ -1,0 +1,16 @@
+/*styles*/
+.btn-1{
+    @include btnStyle-1;
+}
+
+.btn-2{
+    @include btnStyle-2;
+}
+
+.btn-3{
+    @extend %base-btnStyle-2;
+    padding: 6px 8px;
+    background-color: $lime;
+    display: table;
+    margin: 0 auto;
+}

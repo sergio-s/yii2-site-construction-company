@@ -9,16 +9,15 @@
 
 <?php $this->beginContent('@app/views/layouts/main.php'); ?>
 
-<article class="grid_8 alpha">
-    <div class="indent-right">
-        <?= $content; ?>
-    </div>
+<article class="col-md-16">
+    <?= $content; ?>
 </article>
 
-<div id="sidebar" class="grid_4 omega">
-    <div id="sidebar" class="indent">
-        <div class="menu_vert">
-            <h3 class="prev-indent-bot2">Наши услуги</h3>
+<div class="bg-sidebar"></div>
+<div id="sidebar" class="col-md-8">
+    <div class="row">
+        <div class="menu_vert col-md-24">
+            <h3>Наши услуги</h3>
             <ul class="list-2">
                 <li><a href="#">Шпаклевка </a></li>
                 <li><a href="#">Укладка плитки</a></li>
@@ -30,9 +29,9 @@
 
         <p class="sep"></p>
 
-        <div class="lastPhoto">
-            <h3 class="prev-indent-bot2">Новые фото</h3>
-            <ul>
+        <div class="lastPhoto col-md-24">
+            <h3>Новые фото</h3>
+            <ul class="textStyle2">
                 <li>
                     <p class="lastPhoto-title"><a href="" title="">Установили смеситель в ванной с боку</a></p>
                     <a href="" class="lastPhoto-img"><img title="" alt="" src=""></a>
@@ -57,9 +56,9 @@
 
         <p class="sep"></p>
 
-        <div class="lastArticle">
-            <h3 class="prev-indent-bot2">Новые записи</h3>
-            <ul class="posts">
+        <div class="lastArticle col-md-24">
+            <h3>Новые записи</h3>
+            <ul class="textStyle2">
                 <li>
                     <div class="lastArticle-cnt"><i class="fa fa-calendar"></i><span>16 апреля 2012 г.</span></div>
                     <div>

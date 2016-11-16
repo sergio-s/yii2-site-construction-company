@@ -1,0 +1,43 @@
+//fonts Elements
+$h1: 'h1';
+$h2: 'h2';
+$h3: 'h3';
+$h6: 'h6';
+
+$TopMenufontFamily: $fontTrebuchet;
+$h1-fontFamily: $fontTrebuchet;
+$h2-fontFamily: $fontTrebuchet;
+$h3-fontFamily: $fontTrebuchet;
+$h6-fontFamily: $fontTrebuchet;
+
+//font size ($base: 14px)
+$fs-menuTop: 18px;
+$fs-small: 0.9em;
+$fs-big: 1.5em;
+
+$fs-h1: 2em;
+$fs-h2: 1.5em;
+$fs-h3: 1.9em;
+$fs-h6: 1.1em;
+
+//Elements colors
+$fontBodyColor: $someGrey;
+$aColor: $yellowOrange;
+$h1Color: $darkGrey;
+$h2Color: $mediumGrey;
+$h3Color: $mediumGrey;
+$h6Color: $yellowOrange;
+ 
+//background-color
+$bg-footerBottom: $liteGray;
+
+//image styling
+
+$border-radius: 4px;
+
+//Other var
+$menuPunkts: 5;
+$menuPunktsWidth: (100 / $menuPunkts) * 1%; /* при ширине 100% */
+
+//form & input
+$height-input: 30px;

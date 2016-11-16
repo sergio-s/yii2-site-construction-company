@@ -12,9 +12,9 @@ class GuestBookAsset extends AssetBundle
     public $basePath = '@webroot';
     public $baseUrl = '@web';
     
-    public $css = [
-        'css/gb.css',
-    ];
+//    public $css = [
+//        'css/gb.css',
+//    ];
     
     public $js = [
         'js/guest-book.js',

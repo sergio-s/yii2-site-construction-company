@@ -1,0 +1,85 @@
+/*Colors*/
+$Aqua: #00FFFF;//       0,255,255
+$Yellow: #FFFF00;//	255,255,0
+$SlateBlue: #6A5ACD;// 	106,90,205
+$MistyRose: #FFE4E1;// 	255,228,225
+
+
+//colors
+$white: #ffffff;
+
+//yelow 
+$yellowOrange: #ff9601;
+$yellowOrangeLite: #E1CC89;
+$yellowOrangeLighten: lighten( $yellowOrangeLite, 10% );
+$yellowOrangeLighten-1: lighten( $yellowOrangeLite, 23% );
+
+//red
+$darkRed: #380001;
+$red: red;
+
+
+//grey
+$someGrey: #555;//для текста
+$liteGray: #f1f1f1;
+$darkGrey: #262626;
+$mediumGrey: #949494;
+$NormalGrey:lighten( #b2b2b2, 20% );
+
+
+//grin
+$liteGrin: #255625;
+$darkGrinRed: #380001;//как  в активном меню
+$lime: #68b12f;
+
+$colorLightBlue: #E1EBF2;
+$colorLighterBlue: #ECF3F7;
+
+$colorDarckBlue: rgba(147, 171, 188, 0.5);
+$color-half50-DarckBlue: rgba($colorDarckBlue,.2);
+$colorBlue: #105289;//используется для текста
+
+/*Colors styles*/
+.color-1 {
+    color: $white;
+}
+.yellowOrange {
+    color: $yellowOrange;
+}
+.yellowOrangeLite {
+    color: $yellowOrangeLite;
+}
+.yellowOrangeLighten {
+    color: $yellowOrangeLighten;
+}
+
+//grin
+.liteGrin{
+    color: $liteGrin;
+}
+
+//grey
+.liteGray {
+    color: $liteGray;
+}
+.darkGrey {
+    color: $darkGrey;
+}
+.mediumGrey {
+    color: $mediumGrey
+}
+//red
+.darkRed{
+    color: $darkRed;
+}
+.color-4 {
+  color: #ff9601;
+}
+.mistyRose{
+    color:$MistyRose;
+}
+
+//background
+.bg-col-liteGray{
+    background-color: $liteGray;
+}

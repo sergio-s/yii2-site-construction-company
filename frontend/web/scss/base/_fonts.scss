@@ -1,0 +1,16 @@
+//fonts
+$fontTrebuchet: "Trebuchet MS", Arial, Helvetica, sans-serif;
+$fontTahoma: Tahoma,Verdana,Segoe,sans-serif;
+$fontArial: Arial, sans-serif;
+
+%font-family-Trebuchet{
+    font-family: $fontTrebuchet;
+}
+
+%font-family-Tahoma{
+    font-family: $fontTahoma;
+}
+
+%font-family-Arial{
+    font-family: $fontArial;
+}

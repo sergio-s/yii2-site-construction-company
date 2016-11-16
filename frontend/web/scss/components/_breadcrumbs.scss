@@ -1,0 +1,36 @@
+#breadcrumbs-col{
+    @include linear-gradient(to top, $darkGrinRed, lighten( $darkGrinRed, 10% ));//bourbon + sass
+    padding: 10px;
+    border-top:1px lighten( $darkGrinRed, 20% ) solid;
+    border-left: 1px lighten( $darkGrinRed, 10% ) solid;
+    border-right: 1px lighten( $darkGrinRed, 10% ) solid;
+    
+    
+}
+ul.breadcrumbs-1{
+    font-family: $fontTrebuchet;
+    li{ 
+        float:left;
+        &:after{
+            @include icon("arrow-right");  
+            margin:0 5px;
+            color: lighten( $darkGrinRed, 20% );
+            font-weight: 600;
+        }
+        
+        &:last-child:after{
+            display: none;
+        }
+        a{
+            font-family: $fontArial;
+            &:hover{
+                text-decoration: none;
+                color: lighten( $yellowOrange, 20% );
+                
+            }
+        }
+        span{
+            color: $white;
+        }
+    }
+}

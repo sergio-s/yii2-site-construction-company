@@ -1,0 +1,459 @@
+/*
+------------------------------------------------------------------------------
+Гостевая книга
+--------------------------------------------------------------------------------
+*/
+$bgColorMessage_1   : $colorLightBlue; // цвет
+$bgColorMessage_2   : $colorLighterBlue; // цвет
+$bgColorAdminAnswer : $white; // белый
+
+$colorMesText: $someGrey;
+
+
+$marginMessage: 20px 0;
+$paddingMesBox: 8px;
+
+$fontSizeTheme: 18px;
+$fontSizeMesData: 14px;
+
+%cloud{
+    background-color: #fff;
+    border-radius: 4px;
+    position: relative;
+    border:1px $colorDarckBlue solid;
+    &::after,
+    &::before{
+        content: '';
+        border: solid transparent;
+        position: absolute;
+        top: 3%;
+        width: 0;
+        
+    }
+    &::before{
+        border-right-color: $colorDarckBlue;
+        border-width: 10px;
+        left: -10px;
+        margin-top: -1px;
+        margin-left: -11px;
+    }
+    &::after{
+        border-right-color: $colorLighterBlue;
+        border-width: 9px;
+        margin-left: -18px;
+    }   
+}
+
+
+#gb-messageList{
+    margin: 20px 0;
+    padding:0;
+    color: #2a3744;
+    & li.gb-singleList{
+        margin-top: 20px;
+        position:relative;
+        z-index:10;
+        &::before{
+            display: block;
+            content: '';
+            width: 3px;
+            height: 100%;
+            background-color: $colorLightBlue;
+            position: absolute;
+            left:0%;
+            z-index:11;
+        }
+    }
+    & > li.gb-singleList{
+        & > .gb-avatarbBox::before{
+            display: none;
+        }
+    }    
+    
+    
+    & > li.gb-singleList .gb-message-box{
+        @extend %cloud;
+/*        background-color: $bgColorMessage_2;*/
+    }
+    & > li.gb-singleList:nth-child(even) .gb-message-box{
+/*        background-color: $yellowOrangeLighten-1;*/
+    }
+    
+}
+
+/*сообщение админа*/
+.gb-adminMes > .gb-message{
+    & .gb-message-box{
+        border:1px lighten(red,35%) solid !important;
+        box-shadow: 0px 0px 10px 1px lighten($Yellow,25%);
+        &::before{
+            border-right-color: lighten(red,35%) !important;
+            
+        }
+    
+    }
+}
+.gb-adminMes > .gb-avatarbBox > div{
+    background-color: lighten($Yellow,30%);
+    border-radius: 50%;
+    border:2px lighten(red,35%) solid; box-shadow: 0px 0px 10px 1px $mediumGrey;
+    & img{
+        border-radius: 50%;
+    }
+}
+
+/*общие стили аватара*/
+.gb-avatarbBox{
+    padding-left: 0;
+    z-index:12;
+    position:relative;
+    &::after{
+        position: absolute;
+        display: block;
+        content: '';
+        background-color: $white;
+        width: 100%;
+        height: 120%;
+        top:0;
+        z-index: -1;
+    }
+    &::before{
+        position: absolute;
+        left:-40%;
+        top:50%;
+        display: block;
+        content: '';
+        background-color: $colorLightBlue;
+        width: 20%;
+        height: 3px;
+    }
+    & > .repliedCount{
+        display: table;
+        margin: 4px auto 0 auto;
+        color:lighten($colorMesText, 20%);
+        font-size: 10px;
+        cursor: help; 
+        & .fa{
+            font-size: 90%;
+            margin: 3px 2px 0 0;
+            color: $colorDarckBlue;
+        }
+    }
+}
+.gb-avatarbBox > div{
+    padding: 4%; 
+    @include mes-BorderStyle($border-radius, solid);
+    background-color: lighten($lime,45%);
+    overflow: hidden;
+}
+
+.gb-avatarImg{
+    display: block;
+    width: 100%;
+    margin: 0 auto;
+    box-sizing: border-box;
+    background-color: $white;
+}
+
+.mesHeader{
+    @include singleBorder($style: solid, $position: "bottom");
+    padding: $paddingMesBox;
+    padding-bottom: 0;
+    color:lighten($colorMesText, 20%);
+    background-color: $colorLighterBlue;
+    font-size: 13px;
+    border-radius:4px 4px 0 0;
+    & ul{
+        @include singleBorder($position: "bottom");
+        padding:4px 0;
+        &:last-child{
+            @include singleBorder($borderNone: true);
+        }
+    }
+    
+}
+
+.gb-text{
+    padding: $paddingMesBox;
+    color:$colorMesText;
+    @extend %font-family-Trebuchet;
+}
+
+.gb-mesData, .gb-tags, .gb-actions{
+    overflow: hidden;
+    & li{
+        float: left;
+        margin-right: 6px;
+        
+    }
+}
+.gb-mesData{
+    & span:first-child i.fa{
+        color: $colorDarckBlue;
+        font-size: 110%;
+        margin-top: 2px;
+        font-weight: bold;
+        
+    }
+    & *{
+        margin-right: 4px;
+    }
+    & .gb-angle{
+        color: $colorDarckBlue;
+        position: relative;
+        top: 2px;
+    }
+    
+}
+
+.gb-tags{
+    @extend %font-family-Trebuchet;
+    font-size: 90%;
+    & li{
+        &:first-child{
+            & .fa{
+                color: $colorDarckBlue;
+                font-size: 110%;
+                margin-right: 6px;
+            }
+            &::after{
+                content: '';
+            }    
+        }
+        margin:0;
+        &::after{
+            content: '/';
+            margin: 0 4px;
+            color: $colorDarckBlue;
+        }
+    }
+    & li >a{
+        transition: color .5s ease;
+        &:hover{
+            
+        }
+    }
+}
+
+.gb-actions{
+    padding:6px 0;
+    & li{
+        @extend %btnStyle-sm-grey;
+    }
+    & li.gb-action-answer{
+        @extend %btnStyle-sm-lime;
+    }
+    & li.gb-action-update{
+        @extend %btnStyle-sm-blue;
+    }
+    & li.gb-action-disabled{
+        @extend %btnStyle-sm-orange;
+    }
+    & li.gb-action-delete{
+        @extend %btnStyle-sm-red;
+    }
+    
+}
+.gb-chMesWrap{
+    padding-left: 5%;
+    display: table;
+}
+
+
+/*-------------------------------------------------------------------------------
+                форма отправки сообщения в гостевой книге
+--------------------------------------------------------------------------------*/
+
+.required_notification {
+    color:$red;
+    font-style: italic;
+    display: table;
+    position: relative;
+    margin-left: 1%;
+}
+.gbformbox{
+    margin: 20px auto;
+    padding: 20px 0;
+    border-top: 1px dotted $colorDarckBlue;
+    border-bottom: 1px dotted $colorDarckBlue;
+}
+.gbformbox input, .gbformbox textarea {
+    width: 90%;
+    transition: all .5s, border-color .5s, box-shadow 0.3s ease;
+    @include mes-BorderStyle($radius: 0px, $style: solid, $color: $colorDarckBlue);
+    
+}
+.gbformbox input:focus, .gbformbox textarea:focus {
+    width: 100%;
+    border-color: $colorBlue;
+    //box-shadow: inset 0 0 0 3px $colorDarckBlue;
+    
+}
+.gbformbox input,{
+    height: $height-input;
+    padding: 0 10px;
+    @extend %font-family-Trebuchet;
+}
+.gb--textarea{
+    padding: 10px;
+    min-height: 200px;
+    @extend %font-family-Trebuchet;
+}
+
+
+.formgroup{
+    padding-top: 20px;
+    padding-bottom: 20px;    
+}
+
+.field-gbHiddenInputParentId{
+    display: none;
+}
+
+input.my-captcha-input{
+    width: 40%;
+}
+
+%asterisk{
+    @include icon("asterisk");
+    display: inline;
+    color: $red;
+    font-size: 60%;
+    margin-right: 4px;
+    vertical-align: 40%;
+}
+
+.asterisk::before{
+    @extend %asterisk;
+}
+
+//маркер обязательного поля
+.required label::before{
+    @extend %asterisk;
+}
+
+//////////////////////////
+//сообщение в виде облака
+//////////////////////////
+.gbformbox .hint-block{
+    font-size: 80%;
+    color: $liteGrin;
+    border: 1px solid $lime;
+    border-radius: $border-radius;
+    padding: 5px;
+    position: relative;
+    margin-bottom: 5px;
+    height: auto;
+    opacity: 0.5;
+    text-indent: 0;
+    transition: height .9s, opacity .8s, text-indent .2s ease;
+    &::before, 
+    &::after{
+        content: ''; 
+        position: absolute;
+        left: 20px; bottom: -10px;
+        border: 5px solid transparent;
+        border-top: 5px dotted $lime;
+    }
+    &::after {
+        border-top: 5px solid white;
+        bottom: -9px; 
+    }
+}
+
+/*
+Состояние has-success
+*/
+
+
+.gbformbox .marker{
+    display: block;
+    width: 10px;
+    height: 10px;
+    position: absolute;
+    top: ($height-input/2)-5;
+    left:0;
+    background-color: $lime;
+    border-radius: 5px;
+    opacity: 0;
+    transition: opacity .8s ease;
+}
+.gbformbox .has-success{
+    .hint-block{
+        height: 0;
+        opacity: 0;
+        text-indent:-99999px;
+    }
+    .gb--text-input, select.selectList{
+        border-color: $lime;
+        
+    }
+    .gb--textarea{
+        border-color: $lime;
+        
+    }
+    .marker{
+        opacity: 1;
+    }
+    
+}
+
+.gbformbox .help-message{
+    opacity: 0;
+    position: relative;
+    left:-20px;
+    transition: opacity .8s, left .4s ease;
+}
+
+.gbformbox .has-error{
+    
+    .gb--text-input, select.selectList{
+        border-color: $red;
+        
+    }
+    .gb--textarea{
+        border-color: $red;
+        
+    }
+    .marker{
+        opacity: 1;
+        background-color: $red;
+    }
+    .help-message{
+        opacity: 1;
+        left: 0;
+    }
+}
+
+select.selectList{
+    @extend %font-family-Trebuchet;
+    @include mes-BorderStyle($radius: 0px, $style: solid, $color: $colorDarckBlue);
+    & option{
+        padding: 4px 10px;
+        &:hover{
+            cursor: pointer;
+        }
+    }
+}
+
+//Теги ,выводимые под selectom
+#tagsBoxForm{
+    display: table;
+    @extend %font-family-Trebuchet;
+    & > span{
+        @extend %btnStyle-sm-blue;
+        opacity: 0;
+        margin-right: 4px; 
+        &:hover{
+            cursor: auto;
+        }
+    }
+}
+
+/*/----------------------форма отправки сообщения в гостевой книге----------------------*/
+
+
+/*/gb
+----------------------------------------------------------------------------------
+----*/
+

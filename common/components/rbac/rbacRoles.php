@@ -7,7 +7,6 @@ namespace common\components\rbac;
 class rbacRoles
 {
     const ROLE_ADMIN = 'admin';
-    const ROLE_MODERATOR = 'moderator';
     const ROLE_USER = 'user';
 
     const PERMISSION_ADMIN_CRUD = 'adminCrud';
@@ -21,7 +20,6 @@ class rbacRoles
     {
         return [
             self::ROLE_ADMIN,
-            self::ROLE_MODERATOR,
             self::ROLE_USER,
         ];
     }

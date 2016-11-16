@@ -1,0 +1,281 @@
+//путь к файлу, который будет прописан в стилях
+$fa-font-path: "./font-awesome-4.6.3/fonts" !default;
+
+@import "font-awesome"; 
+
+
+//подключение иконок font-awesome @include icon("amazon");
+@mixin icon($icon) {
+    @include fa-icon;
+    @extend .fa;
+    @extend .fa-#{$icon}:before;
+}
+
+//mixins
+//h1...h6
+@mixin H-css ($h, $font-family: $h1-fontFamily){
+    display: block;
+    font-weight: normal;
+    font-family: $font-family;
+    line-height: 1.2em;
+    @if $h == 'h1' {
+        
+        font-size: $fs-h1;
+        color: #262626;
+        letter-spacing: -1px;
+        background: transparent url("./img/separator-light.png") repeat-x scroll left bottom;
+        padding: 0 0 18px;
+        
+    }@else if $h == 'h2' {
+        
+        display: block;
+        color: $h2Color;
+        font-family: $h2-fontFamily;
+        font-size: $fs-h2;
+        letter-spacing: -2px;
+        margin: 0 0 22px;
+        
+    }@else if $h == 'h3' {
+        
+        display: block;
+        color: $h3Color;
+        font-family: $h3-fontFamily;
+        font-size: $fs-h3;
+        letter-spacing: -2px;
+        margin: 0 0 22px;
+        padding: 10px 0;
+        
+    } @else if $h == 'h6' {
+        
+        color: $yellowOrange;
+        font-style: italic;
+        font-size: $fs-h6;
+        line-height: 1.3em;
+        
+    }
+}
+//text style
+@mixin textStyle1(){
+    @include textStyle2($fs-h2);
+}    
+@mixin textStyle2($font-size: $fs-small){
+    font-size: $font-size;
+    font-family: $fontTrebuchet;
+} 
+@mixin textStyle3(){
+    color: $yellowOrange;
+    font-family: $fontTrebuchet;
+    font-size: $fs-big;
+    letter-spacing: -1px;
+    line-height: 30px;
+}
+
+//image styling mixins
+$imgStyleType1: 'frame1';
+$imgStyleType2: 'frame2';
+
+@mixin imageStyling($type: 'frame2'){
+    @if $type == 'frame1' {
+
+        padding: 10px;
+        background: #fff;
+        box-shadow: 3px 5px 8px rgba(0, 0, 0, 0.7);
+        -moz-box-shadow: 3px 5px 8px rgba(0, 0, 0, 0.7);
+        -webkit-box-shadow: 3px 5px 8px rgba(0, 0, 0, 0.7);
+
+    } @else if $type == 'frame2' {
+
+        padding: 9px;
+        background: #fff;
+        border: 1px solid #e5e5e5;
+
+    }
+}
+
+
+
+/* Button Style */
+%btnStyle-green{
+    background-color: #68b12f;
+    background: linear-gradient(to top, #68b12f, #50911e);
+    border: 1px solid #509111;
+    border-bottom: 1px solid #5b992b;
+    border-radius: 3px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    -ms-border-radius: 3px;
+    -o-border-radius: 3px;
+    box-shadow: inset 0 1px 0 0 #9fd574;
+    -webkit-box-shadow: 0 1px 0 0 #9fd574 inset ;
+    -moz-box-shadow: 0 1px 0 0 #9fd574 inset;
+    -ms-box-shadow: 0 1px 0 0 #9fd574 inset;
+    -o-box-shadow: 0 1px 0 0 #9fd574 inset;
+    font-weight: bold;
+    padding: 6px 20px;
+    text-align: center;
+    text-shadow: 0 -1px 0 #396715;
+    transition: 0.5s;
+    &:hover {
+        opacity:.85;
+        cursor: pointer;
+    }
+    &:active {
+        border: 1px solid #20911e;
+        box-shadow: 0 0 10px 5px #356b0b inset;
+        -webkit-box-shadow:0 0 10px 5px #356b0b inset ;
+        -moz-box-shadow: 0 0 10px 5px #356b0b inset;
+        -ms-box-shadow: 0 0 10px 5px #356b0b inset;
+        -o-box-shadow: 0 0 10px 5px #356b0b inset;
+    }
+}
+@mixin btnStyle-lite-style($basecolor:$liteGray, $fontColor:$darkGrey, $padding: 6px 20px ){
+    color: $someGrey;
+    & *{
+        color: $someGrey;
+        &:hover{
+            text-decoration: none;
+        }
+    }
+    background-color: $basecolor;
+    background: linear-gradient(to top, $basecolor, darken( $basecolor, 10% ));
+    border: 1px solid darken( $basecolor, 20% );
+    border-bottom: 1px solid darken( $basecolor, 20% );
+    border-radius: 3px;
+    box-shadow: inset 0 1px 0 0 darken( $basecolor, 20% );
+    font-weight: normal;
+    padding: $padding;
+    text-align: center;
+    text-shadow: 0 -1px 0 darken( $basecolor, 20% );
+    transition: 0.5s;
+    &:hover {
+        opacity:.85;
+        cursor: pointer;
+        //box-shadow: inset 0 1px 0 0 complement($basecolor);
+        //background: linear-gradient(to top, $basecolor, complement($basecolor));
+        box-shadow: inset 0 1px 0 0 lighten($basecolor, 25%);
+        background: linear-gradient(to top, $basecolor, lighten($basecolor, 25%));
+    }
+    &:active {
+        border: 1px solid $lime;
+        box-shadow: 0 0 10px 5px $basecolor inset;
+    }
+}
+
+%btnStyle-sm-lime{
+    @include btnStyle-lite-style($basecolor:lighten($lime, 25%), $fontColor:$darkGrey, $padding: 3px 10px )
+}
+
+%btnStyle-sm-grey{
+    @include btnStyle-lite-style($basecolor:$liteGray, $fontColor:$darkGrey, $padding: 3px 10px )
+}
+
+%btnStyle-sm-blue{
+    @include btnStyle-lite-style($basecolor:$colorLightBlue, $fontColor:$darkGrey, $padding: 3px 10px )
+}
+
+%btnStyle-sm-orange{
+    @include btnStyle-lite-style($basecolor:lighten($yellowOrangeLite, 25%), $fontColor:$darkGrey, $padding: 3px 10px )
+}
+
+%btnStyle-sm-red{
+    @include btnStyle-lite-style($basecolor:lighten($red, 45%), $fontColor:$darkGrey, $padding: 3px 10px )
+}
+
+@mixin btnStyle-1($color:'white'){
+    margin-left:21.3%;
+    background-color: #68b12f;
+    background: linear-gradient(to top, #68b12f, #50911e);
+    border: 1px solid #509111;
+    border-bottom: 1px solid #5b992b;
+    border-radius: 3px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    -ms-border-radius: 3px;
+    -o-border-radius: 3px;
+    box-shadow: inset 0 1px 0 0 #9fd574;
+    -webkit-box-shadow: 0 1px 0 0 #9fd574 inset ;
+    -moz-box-shadow: 0 1px 0 0 #9fd574 inset;
+    -ms-box-shadow: 0 1px 0 0 #9fd574 inset;
+    -o-box-shadow: 0 1px 0 0 #9fd574 inset;
+    color: $color ;
+    font-weight: bold;
+    padding: 6px 20px;
+    text-align: center;
+    text-shadow: 0 -1px 0 #396715;
+    transition: 0.5s;
+    &:hover {
+        opacity:.85;
+        cursor: pointer;
+    }
+    &:active {
+        border: 1px solid #20911e;
+        box-shadow: 0 0 10px 5px #356b0b inset;
+        -webkit-box-shadow:0 0 10px 5px #356b0b inset ;
+        -moz-box-shadow: 0 0 10px 5px #356b0b inset;
+        -ms-box-shadow: 0 0 10px 5px #356b0b inset;
+        -o-box-shadow: 0 0 10px 5px #356b0b inset;
+    }
+
+
+} 
+
+%base-btnStyle-2{
+    display: inline-block;
+    color: $liteGray;
+    transition: 0.5s;
+    &:hover {
+        background: $yellowOrange;
+        color:$liteGray;
+        text-decoration: none;
+    }
+}
+
+@mixin btnStyle-2(){
+    @extend %base-btnStyle-2;
+    padding: 10px 20px 11px;
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    font-size: 18px;
+    line-height: 1.22em;
+    background: url(./img/button-tail.gif) 0 0 repeat-x #000;
+    text-transform: uppercase;
+    letter-spacing: -1px;
+    position: relative;
+    border-radius: 3px;
+}
+
+//примеси
+@mixin singleBorder($size:1px, $color: $colorDarckBlue, $style: dotted, $position: false, $borderNone: false) {
+    @if $borderNone == false {
+        @if $position == false {
+            border:1px $color $style;
+        } @else {
+            border-#{$position}:1px $color $style;
+        }
+    }@else {
+        border: none;
+    }
+    
+}
+
+@mixin mes-BorderStyle($radius: 4px, $style: dotted, $color: $colorDarckBlue) {
+    border-radius: $radius;
+    @include singleBorder(1px, $color, $style);
+}
+@mixin col-Style($width, $float) {
+    width: $width;
+    float: $float;
+}
+
+//примеси для оформления шрифтов
+@mixin iconAlign($line-height, $vertical-align: text-top) {
+    line-height: $line-height;
+    vertical-align: $vertical-align;
+}
+
+//эффект появления внутреннего border при наведении (как в мейл.ру)
+@mixin border-hover($color, $size){
+    transition: all 0.3s ease;
+    &:hover {
+      box-shadow: inset 0 0 0 $size $color;
+    }
+}

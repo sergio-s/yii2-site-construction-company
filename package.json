@@ -30,6 +30,7 @@
     "gulp-sass": "^2.3.2",
     "gulp-sourcemaps": "^1.6.0",
     "gulp.spritesmith": "^6.2.1",
+    "node-bourbon": "^4.2.8",
     "run-sequence": "^1.2.2"
   }
 }

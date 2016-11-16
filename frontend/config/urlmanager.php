@@ -19,6 +19,11 @@ return [
                 '/' => 'page/home',
                 '<alias:[\w_-]+>' => 'page/normal',
                 
+                'signup' => 'auth/signup',
+                'login' => 'auth/signup',
+                'logout' => 'auth/logout',
+                'auth/<action>' => 'auth/<action>',
+                
                 
                 
                 

@@ -11,21 +11,21 @@ class RbacController extends Controller
 {
     public function actionInit($id = null)
     {
-        $auth = new DbManager;
-        $auth->init();
-
-        $auth->removeAll(); //удаляем старые данные
-
+//        $auth = new DbManager;
+//        $auth->init();
+        $auth = Yii::$app->authManager;
+        
+        
+        $auth->removeAll(); //На всякий случай удаляем старые данные из БД...
+        
         // Rules
-        $groupRule = new GroupRule();
+        //$groupRule = new GroupRule();
+        //$auth->add($groupRule);
 
-        $auth->add($groupRule);
-
-        // добавляем разрешение "adminCrud"
-        $adminCrud = $auth->createPermission('adminCrud');
-        $adminCrud->description = 'Административные фунции CRUD';
-        $auth->add($adminCrud);
-
+        ////////////////////////////////////////////////////////////////////////
+        //                          ROLES
+        ////////////////////////////////////////////////////////////////////////
+        
         // Role user
         $user = $auth->createRole('user');
         $user->description = 'Роль User';
@@ -48,6 +48,18 @@ class RbacController extends Controller
         $auth->addChild($admin, $adminCrud);//обавл. разрешение "adminCrud"
 
 
+        ////////////////////////////////////////////////////////////////////////
+        //                        PERMISSIONS
+        ////////////////////////////////////////////////////////////////////////
+        
+        // добавляем разрешение "adminCrud"
+        $adminCrud = $auth->createPermission('adminCrud');
+        $adminCrud->description = 'Административные фунции CRUD';
+        $auth->add($adminCrud);
+
+        
+        
+        
     }
 
 }

@@ -4,6 +4,7 @@ namespace frontend\models;
 use yii\base\Model;
 use common\models\User;
 
+
 /**
  * Signup form
  */
@@ -13,7 +14,15 @@ class SignupForm extends Model
     public $email;
     public $password;
 
-
+    private $_defaultRole;
+    
+    //$defaultRole передаем при инициализации класса при обработке формы регистрации
+    public function __construct($defaultRole, $config = [])
+    {
+        $this->_defaultRole = $defaultRole;
+        parent::__construct($config);
+    }
+    
     /**
      * @inheritdoc
      */
@@ -52,7 +61,16 @@ class SignupForm extends Model
         $user->email = $this->email;
         $user->setPassword($this->password);
         $user->generateAuthKey();
+        $user->role = $this->_defaultRole;//назначаем роль при регистрации
         
-        return $user->save() ? $user : null;
+        if($user->save()){
+            // добавляем привязку id юзера к id назначенной роли
+            $auth = Yii::$app->authManager;
+            $authorRole = $auth->getRole($this->_defaultRole);
+            $auth->assign($authorRole, $user->getId());
+            
+            return $user;
+        }
+        return  null;
     }
 }

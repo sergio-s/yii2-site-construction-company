@@ -1,0 +1,31 @@
+h1 {
+    @include H-css ($h1);
+}
+
+h2 {
+    @include H-css ($h2);
+}
+
+h3 {
+    @include H-css ($h3);
+}
+
+h6 {
+    @include H-css ($h6);
+}
+
+a {
+    color: $aColor;
+    outline: medium none;
+}
+
+/*стили текста*/
+.textStyle1{
+    @include textStyle1;
+}
+.textStyle2{
+    @include textStyle2;
+}
+.textStyle3{
+    @include textStyle3;
+}

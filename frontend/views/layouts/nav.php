@@ -17,18 +17,17 @@ $currentRoute = Yii::$app->controller->route;
 
 ?>
 
-<nav>
-    <ul class="menu">
-    <?php foreach($menu as $url => $name):?>
-        <?php if($url === Url::current([],true) or ($url === Url::toRoute([$currentRoute], true) && $name === 'Фото работ') ):?>
-        
+
+<ul class="menu">
+    <?php foreach ($menu as $url => $name): ?>
+        <?php if ($url === Url::current([], true) or ( $url === Url::toRoute([$currentRoute], true) && $name === 'Фото работ')): ?>
+
             <li><a class="active" href="<?= $url; ?>"><?= $name; ?></a></li>
-            
-        <?php else:?>
-            
+
+        <?php else: ?>
+
             <li><a href="<?= $url; ?>"><?= $name; ?></a></li>
-            
-        <?php endif;?>
-    <?php endforeach;?>    
-    </ul>
-</nav>
+
+        <?php endif; ?>
+    <?php endforeach; ?>    
+</ul>

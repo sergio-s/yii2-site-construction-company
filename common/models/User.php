@@ -6,7 +6,7 @@ use yii\base\NotSupportedException;
 use yii\behaviors\TimestampBehavior;
 use yii\db\ActiveRecord;
 use yii\web\IdentityInterface;
-
+use common\models\avatars\Avatars;
 /**
  * User model
  *
@@ -38,6 +38,25 @@ class User extends ActiveRecord implements IdentityInterface
     /**
      * @inheritdoc
      */
+    public function rules()
+    {
+        return [
+            ['status', 'default', 'value' => self::STATUS_ACTIVE],
+            ['status', 'in', 'range' => [self::STATUS_ACTIVE, self::STATUS_DELETED]],
+            ['role', 'string', 'max' => 64],
+        ];
+    }
+
+    public function attributeLabels()
+    {
+        return [
+            'role' => 'Роли пользователей',
+        ];
+    }
+    
+    /**
+     * @inheritdoc
+     */
     public function behaviors()
     {
         return [
@@ -45,17 +64,7 @@ class User extends ActiveRecord implements IdentityInterface
         ];
     }
 
-    /**
-     * @inheritdoc
-     */
-    public function rules()
-    {
-        return [
-            ['status', 'default', 'value' => self::STATUS_ACTIVE],
-            ['status', 'in', 'range' => [self::STATUS_ACTIVE, self::STATUS_DELETED]],
-        ];
-    }
-
+    
     /**
      * @inheritdoc
      */
@@ -185,5 +194,10 @@ class User extends ActiveRecord implements IdentityInterface
     public function removePasswordResetToken()
     {
         $this->password_reset_token = null;
+    }
+    
+    public function getAvatar()
+    {
+        return $this->hasOne(Avatars::className(), ['id' => 'avatar_id']);
     }
 }

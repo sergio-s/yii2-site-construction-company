@@ -1,0 +1,145 @@
+
+/*--------------------------------------------------------------------------------
+                            global styles
+---------------------------------------------------------------------------------*/
+body{
+    color: $fontBodyColor;
+}
+
+.p1 {
+  margin-bottom: 8px;
+}
+
+.p2 {
+  margin-bottom: 15px;
+}
+
+.p3 {
+  margin-bottom: 30px;
+}
+
+.p4 {
+  margin-bottom: 40px;
+}
+
+.p5 {
+  margin-bottom: 50px;
+}
+.p2-2{
+    margin:15px 0;
+}
+.fleft {
+  float: left;
+}
+
+.fright {
+  float: right;
+}
+
+.text-1 {
+    
+}
+.price {
+  display: inline-block;
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  font-size: 35px;
+  line-height: 1.2em;
+  letter-spacing: -2px;
+}
+/*blockquote*/
+blockquote{
+    font: 14px/20px italic Times, serif;
+    padding: 10px 20px 0px 20px;
+    background-color: #faebbc;
+    border-top: 1px solid #e1cc89;
+    border-bottom: 1px solid #e1cc89;
+    border-left: 0;
+    margin: 5px;
+    background-image: url(img/openquote1.gif);
+    background-position: 20px 0;
+    background-repeat: no-repeat;
+    text-indent: 30px;
+    position: relative;
+    overflow: hidden;
+}
+blockquote:after {
+    content: ' .';
+    text-indent: -9999px;
+    display: block;
+    width: 50px;
+    height: 30px;
+    float:right;
+    background-image: url(img/closequote1.gif);
+    background-repeat: no-repeat;
+    background-position: bottom right;
+}
+
+
+/*списки*/
+
+.list-2{
+    li {
+        line-height: 1.23em;
+        padding: 8px 0;
+        background: url(./img/pic-1.gif) 0 bottom repeat-x;
+        &:last-child {
+            background: none;
+        }
+        a {
+            display: inline-block;
+            color: #262626;
+            padding-left: 10px;
+            background: url(./img/marker-2.gif) 0 6px no-repeat;
+            font-size: $fs-small;
+            &:hover {
+                color: $yellowOrange;
+                text-decoration: none;
+            }
+        }
+    }
+}
+/*оформление картинок*/
+.frame1 {
+    @include  imageStyling($imgStyleType1);
+}
+
+.frame2 {
+    @include  imageStyling($imgStyleType2);
+}
+
+.img-respons{
+    width: 100%;
+    height: auto;
+}
+
+.img-float-l {
+  float: left;
+  margin: 10px 30px 10px 10px;
+}
+
+.img-float-r {
+  float: right;
+  margin: 10px 10px 10px 30px;
+}
+.link-img:hover{
+    border: 1px $SlateBlue solid;
+    transition: 0.5s;
+    -webkit-box-shadow: 0px 9px 21px -7px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 9px 21px -7px rgba(0,0,0,0.75);
+    box-shadow: 0px 9px 21px -7px rgba(0,0,0,0.75);
+}
+
+.iconAlign{
+    vertical-align:middle;
+    margin-right: 5px;
+}
+/*------------------------------------------------------------------------------
+                                Components
+--------------------------------------------------------------------------------*/
+
+
+/*blocks*/
+.info-block1{
+    background-color: $liteGray;
+    border:1px #b2b2b2 solid;
+}
