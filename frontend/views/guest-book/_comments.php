@@ -20,8 +20,8 @@ use common\components\rbac\rbacRoles;
                     <div>
                         <?=$message->avatar;?>
                     </div>
-                    <?php if($message->isReplied()):?>
-                    <span class="repliedCount" title="Кол-во ответов на сообщение."><i class="fa fa-reply" aria-hidden="true"></i><?=$message->isReplied();?></span>
+                    <?php if($message->isReplied):?>
+                    <span class="repliedCount" title="Кол-во ответов на сообщение."><i class="fa fa-reply" aria-hidden="true"></i><?=$message->isReplied;?></span>
                     <?php endif;?>
                 </div>
                 <div class="gb-message  col-md-21">

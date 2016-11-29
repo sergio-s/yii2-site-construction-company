@@ -10,7 +10,8 @@ use frontend\models\gb\GbForm;
 use app\models\gb\Guestbook;
 use app\models\gb\GbEnum;
 use app\models\tags\Tags;
-
+use common\models\settings\SettingsEnum;
+use common\services\settings\SettingsService;
 /**
  * PageController
  */
@@ -20,11 +21,23 @@ class GuestBookController extends BaseFront
     
     private $pageSize = 20;//кол-во материалов на странице пагинации
     private $section;
-    
+    private $optionsServiceGB;
+
+    public function init()
+    {
+        $this->optionsServiceGB = $this->settingsService
+                ->findSettings(SettingsEnum::GB_SETTINGS_ID)
+                ->getOptions(SettingsService::TYPE_ARRAY);
+        
+//        var_dump($this->optionsServiceGB);
+        
+        parent::init();
+    }
+
     public function beforeAction($action) 
     {
         $this->section = Sections::getSectionFromName(Sections::SEC_GOEST_BOOK);
-        
+
         if ($action->id === 'index') {
             $this->layout = '@app/views/layouts/tpl/photogalery';
             //$this->createAction('captcha')->getVerifyCode(true);//разрешаем обновление кода капчи при рефреше
@@ -52,7 +65,6 @@ class GuestBookController extends BaseFront
      */
     public function actionIndex($pageNum = null)
     {
-        
         //Work wich massages
         //построение постраничной навигации
         $query = Guestbook::getChiefId();//только id сообщений первого уровня
@@ -111,9 +123,9 @@ class GuestBookController extends BaseFront
                                             ->all();
 
             if (!empty($paginMessages)) {
-                //$start = microtime(true);
+                
                 $messagesTree = Guestbook::buildTree($paginMessages);
-                //printf('Страница сгенерирована за %.5f сек.', round(microtime(true) - $start, 4));
+                
             }
         }
         
@@ -126,8 +138,6 @@ class GuestBookController extends BaseFront
         //Work wich form
         $gbForm = new GbForm();
         
-        
-        
         if ($gbForm->load(Yii::$app->request->post()) && $gbForm->validate()){
                 $gb = new Guestbook();
                 
@@ -138,10 +148,15 @@ class GuestBookController extends BaseFront
                 $gb->message = $gbForm->message;//из input
                 $gb->tagsId = $gbForm->tags;
                 
+                //настройка гостевой из таблицы settings
+                if(in_array('guest' ,$this->optionsServiceGB['moderation_new_messages'])){
+                    $gb->status = (string)GbEnum::STATUS_MODER;
+                }
+                
 //                var_dump($gb);die;
                 if($gb->validate() && $gb->save()){
                     return $this->redirect(['index']);
-                }
+                    }
         }
         
         return $this->render('index',[

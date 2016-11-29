@@ -4,6 +4,14 @@ use \yii\web\Request;
 $baseUrl = str_replace('/frontend/web', '', (new Request)->getBaseUrl());
 $baseUrl = str_replace('/backend/web', '', $baseUrl);
 
+//di регистрация
+Yii::$container->set('common\repositories\settings\ISettingsRepository', 'common\repositories\settings\SettingsRepositoryQuery');
+Yii::$container->set('common\services\settings\ISettingsService', 'common\services\settings\SettingsService');
+
+//регистрация алиаса интерфейса, тобы вызывать его в контроллере в сокращенном виде
+Yii::$container->set('ISettingsRepository', 'common\repositories\settings\ISettingsRepository');//      
+Yii::$container->set('ISettingsService', 'common\services\settings\ISettingsService');
+
 return [
     'vendorPath' => dirname(dirname(__DIR__)) . '/vendor',
     'aliases' => require(__DIR__ . '/aliases.php'),
@@ -29,4 +37,7 @@ return [
         'assetManager' => require(__DIR__ . '/assetManager.php'),
         
     ],
+    
+    
+    
 ];

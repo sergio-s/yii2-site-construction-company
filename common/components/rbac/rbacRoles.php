@@ -8,6 +8,7 @@ class rbacRoles
 {
     const ROLE_ADMIN = 'admin';
     const ROLE_USER = 'user';
+    const ROLE_GUEST = 'guest';
 
     const PERMISSION_ADMIN_CRUD = 'adminCrud';
 
@@ -21,6 +22,7 @@ class rbacRoles
         return [
             self::ROLE_ADMIN,
             self::ROLE_USER,
+            self::ROLE_GUEST
         ];
     }
 

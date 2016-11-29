@@ -11,6 +11,7 @@ use app\models\tags\Tags;
 use yii\helpers\Html;
 use yii\helpers\ArrayHelper;
 use app\models\tags\TagsGuestbook;
+
 /**
  * This is the model class for table "guestbook".
  *
@@ -44,17 +45,6 @@ class Guestbook extends \yii\db\ActiveRecord
         }
     }
     
-    
-    /**
-     * @return array
-     */
-    public static function getStatusList(){
-        return[
-            GbEnum::STATUS_ACTIVE => 'Активен',
-            GbEnum::STATUS_DISABLED => 'Отключен',//отключен
-            GbEnum::STATUS_SPAM => 'Спам',
-        ];
-    }
     
     /**
      * @inheritdoc
@@ -368,8 +358,14 @@ class Guestbook extends \yii\db\ActiveRecord
         return $this->status === GbEnum::STATUS_DISABLED;
     }
     
+    //На модерации ли?
+    public function getIsModeration()
+    {
+        return $this->status === GbEnum::STATUS_MODER;
+    }
+    
     //Редактировалось ли сообщение
-    public function isEdited()
+    public function getIsEdited()
     {
         return $this->createdDate !== $this->updatedDate;
     }
@@ -380,7 +376,7 @@ class Guestbook extends \yii\db\ActiveRecord
      *
      * @return int nubmer of replies
      */
-    public function isReplied()
+    public function getIsReplied()
     {
         return self::find()->where(['parent_id' => $this->id])->active()->count();
     }
